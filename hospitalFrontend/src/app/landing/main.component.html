@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4"></nav>
+<div class="water-background">
+    <div class="container">
+        <div class="jumbotron colores">
+            <h1 *ngIf="!nombreUsuario" class="display-4">Bienvenid@ a la pescasion. <i class="fa fa-anchor"></i> </h1>
+            <br>
+            <h1 *ngIf="!nombreUsuario" class="display-8">Por favor inicia sesion o registrate para unirte a la
+                comunidad. </h1>
+            <h1 *ngIf="nombreUsuario" class="display-4">Bienvenido {{nombreUsuario}}</h1>
+            <p class="lead">Este proyecto tiene como fin permitir a las personas conectarse a traves de lo apasionante
+                de la pesca, y la vida al aire libre.</p>
+            <hr class="my-4">
+            <p>Este proyecto fue creado por Pablo Andres Peralta.</p>
+            <a class="btn btn-primary btn-lg" routerLink="/registro" role="button">Si no tienes una cuenta haz click
+                aqui.</a>
+        </div>
+        <div class="logger">
+            <app-login></app-login>
+        </div>
+    </div>

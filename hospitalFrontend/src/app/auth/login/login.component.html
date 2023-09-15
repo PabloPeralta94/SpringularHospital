@@ -1,0 +1,25 @@
+<div class="container d-flex justify-content-center water-background">
+    <div class="card bg-dark width">
+        <div class="card-header text ">
+            <h2>Iniciar sesión.</h2>
+        </div>
+        <div class="card-body  ">
+            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                <div class="form-group text ">
+                    <label for="nombreUsuario">Nombre de Usuario</label>
+                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
+                        [(ngModel)]="nombreUsuario" required>
+                </div>
+                <div class="form-group text ">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-success btn-block text " [disabled]="!f.valid" type="submit">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

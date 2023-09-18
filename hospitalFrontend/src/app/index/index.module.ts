@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MenuComponent } from './menu/menu.component';
-
 
 
 
 @NgModule({
   declarations: [
-   MenuComponent
+    InicioComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     FontAwesomeModule
-  ],
-  exports: [
-    MenuComponent    
   ]
 })
-export class SharedModule { }
+export class IndexModule { }

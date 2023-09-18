@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.tokenService.setToken(data.token);
-        this.router.navigate(['/landing']);
+        this.router.navigate(['/index']);
       },
       err => {
         this.errMsj = err.error.message;

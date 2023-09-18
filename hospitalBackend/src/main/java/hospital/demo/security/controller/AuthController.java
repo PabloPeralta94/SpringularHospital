@@ -22,7 +22,7 @@ import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.RolService;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.security.dto.Mensaje;
-
+import java.util.Arrays;
 import java.text.ParseException;
 import java.util.HashSet;
 import java.util.Set;
@@ -48,24 +48,42 @@ public class AuthController {
     JwtProvider jwtProvider;
 
     @PostMapping("/nuevo")
-    public ResponseEntity<?> nuevo( @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
-        if(bindingResult.hasErrors())
-            return new ResponseEntity(new Mensaje("campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
-        if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario()))
-            return new ResponseEntity(new Mensaje("ese nombre ya existe"), HttpStatus.BAD_REQUEST);
-        if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
-            return new ResponseEntity(new Mensaje("ese email ya existe"), HttpStatus.BAD_REQUEST);
-        Usuario usuario =
-                new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
-                        passwordEncoder.encode(nuevoUsuario.getPassword()));
+    public ResponseEntity<?> nuevo(@RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity(new Mensaje("Campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
+        }
+
+        if (usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario())) {
+            return new ResponseEntity(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+        }
+
+        if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
+            return new ResponseEntity(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
+        }
+
+        Usuario usuario = new Usuario(
+                nuevoUsuario.getNombre(),
+                nuevoUsuario.getNombreUsuario(),
+                nuevoUsuario.getEmail(),
+                passwordEncoder.encode(nuevoUsuario.getPassword())
+        );
+
         Set<Rol> roles = new HashSet<>();
-        roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
-        if(nuevoUsuario.getRoles().contains("admin"))
-            roles.add(rolService.getByRolNombre(RolNombre.ROLE_ADMIN).get());
+
+        // Iterate through roles provided in the request and add them if they exist in the possible roles
+        for (String role : nuevoUsuario.getRoles()) {
+            RolNombre rolNombre = RolNombre.valueOf("ROLE_" + role.toUpperCase()); // Convert to ROLE_ format
+            if (Arrays.stream(RolNombre.values()).anyMatch(r -> r.equals(rolNombre))) {
+                roles.add(rolService.getByRolNombre(rolNombre).get());
+            }
+        }
+
         usuario.setRoles(roles);
         usuarioService.save(usuario);
-        return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
+
+        return new ResponseEntity(new Mensaje("Usuario guardado"), HttpStatus.CREATED);
     }
+
 
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login( @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){

@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #ffa500;
-  box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+  background-color:  #3498db; /* Light background color for cleanliness */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   height: auto;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .colores {
-  background-color: #ffa500;
-  box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
-
+  background-color: #3498db; /* A calming blue color associated with trust and professionalism */
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.6); /* Shadow with the blue accent */
+  color: #FFFFFF; /* Text color for better readability */
 }

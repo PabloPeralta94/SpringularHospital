@@ -1,0 +1,48 @@
+.container-main {
+    display: flex;
+    flex-wrap: wrap;       
+    margin-left: 25px;
+    margin-right: 25px;
+    justify-content: space-evenly;
+}
+
+.botones {
+    width: 33%;
+    min-width: 25%;
+    max-width: 300px; 
+    height: auto;
+    padding: 25px; 
+    border: 1px solid black; 
+    margin: 25px;
+    background-color: azure;
+    text-align: center;
+}
+
+.botones h2 {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.botones p {
+    font-size: 1rem;
+    line-height: 1.4; 
+    margin: 0;    
+    overflow: hidden;
+    text-overflow: ellipsis;  
+}
+
+.botones span {
+    font-size: 0.8rem;
+    line-height: 1;
+    margin: 0;   
+    overflow: hidden;
+    text-overflow: ellipsis;  
+}
+
+
+
+

@@ -57,6 +57,66 @@ export class TokenService {
     return true;
   }
 
+  public isMedic(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    if (roles.indexOf('ROLE_MEDIC') < 0) {
+      return false;
+    }
+    return true;
+  }
+
+  public isNurse(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    if (roles.indexOf('ROLE_NURSE') < 0) {
+      return false;
+    }
+    return true;
+  }
+
+  public isPharma(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    if (roles.indexOf('ROLE_PHARMA') < 0) {
+      return false;
+    }
+    return true;
+  }
+
+  public isDirector(): boolean {
+    if (!this.isLogged()) {
+      return false;
+    }
+    const token = this.getToken();
+    const payload = token.split('.')[1];
+    const payloadDecoded = atob(payload);
+    const values = JSON.parse(payloadDecoded);
+    const roles = values.roles;
+    if (roles.indexOf('ROLE_DIRECTOR') < 0) {
+      return false;
+    }
+    return true;
+  }
+
   public logOut(): void {
     window.localStorage.clear();
     this.router.navigate(['']);

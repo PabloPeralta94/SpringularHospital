@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../services/token.service';
+import { faHospital } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main',
@@ -7,6 +8,7 @@ import { TokenService } from '../services/token.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  hospitalIcon = faHospital;
 
   nombreUsuario: string;
 

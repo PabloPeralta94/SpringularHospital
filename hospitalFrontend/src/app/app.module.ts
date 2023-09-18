@@ -10,6 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { interceptorProvider } from './interceptors/emp-interceptor.service';
+import { IndexModule } from './index/index.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { interceptorProvider } from './interceptors/emp-interceptor.service';
     LandingModule,
     AuthModule,    
     SharedModule,
-    FontAwesomeModule       
+    FontAwesomeModule,
+    IndexModule,
+    PagesModule   
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

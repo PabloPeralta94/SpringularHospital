@@ -12,6 +12,7 @@ import { AreaFarmaceuticaComponent } from './pages/area-farmaceutica/area-farmac
 import { AreaAdministrativaComponent } from './pages/area-administrativa/area-administrativa.component';
 import { AreaDirectivaComponent } from './pages/area-directiva/area-directiva.component';
 import { AreaPacientesComponent } from './pages/area-pacientes/area-pacientes.component';
+import { TurnosPendientesComponent } from './pages/area-medica/turnos-pendientes/turnos-pendientes.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'farmacia', component: AreaFarmaceuticaComponent},
   {path: 'administracion', component: AreaAdministrativaComponent},
   {path: 'direccion', component: AreaDirectivaComponent},
-  {path: 'pacientes', component: AreaPacientesComponent}
+  {path: 'pacientes', component: AreaPacientesComponent},
+  {path: 'turnospen', component: TurnosPendientesComponent}
 
 
 ];

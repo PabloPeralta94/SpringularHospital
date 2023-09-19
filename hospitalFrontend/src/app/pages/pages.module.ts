@@ -8,6 +8,7 @@ import { AreaPacientesComponent } from './area-pacientes/area-pacientes.componen
 import { AreaFarmaceuticaComponent } from './area-farmaceutica/area-farmaceutica.component';
 import { AreaAdministrativaComponent } from './area-administrativa/area-administrativa.component';
 import { AreaDirectivaComponent } from './area-directiva/area-directiva.component';
+import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turnos-pendientes.component';
 
 
 
@@ -18,7 +19,8 @@ import { AreaDirectivaComponent } from './area-directiva/area-directiva.componen
     AreaPacientesComponent,
     AreaFarmaceuticaComponent,
     AreaAdministrativaComponent,
-    AreaDirectivaComponent
+    AreaDirectivaComponent,
+    TurnosPendientesComponent
   ],
   imports: [
     CommonModule,

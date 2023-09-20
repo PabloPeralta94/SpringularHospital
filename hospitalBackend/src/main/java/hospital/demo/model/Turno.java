@@ -1,5 +1,7 @@
 package hospital.demo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,51 +14,49 @@ import javax.persistence.ManyToOne;
 
 import hospital.demo.security.entity.Usuario;
 
-
-
 @Entity
-public class Turno {
+public class Turno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long turnoId;
+    private int turnoId;
 
     private String consultorio;
+
     @Lob
     private String text;
 
     private String paciente;
-    
+
     private String fecha;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_nombre_usuario", referencedColumnName = "nombreUsuario")
     private Usuario user;
 
-
     public Turno() {
-    	
-    }   
 
-    public Turno(String title, String text, String paciente, String fecha, Usuario user) {
-        this.consultorio = title;
+    }
+
+    public Turno(String consultorio, String text, String paciente, String fecha, Usuario user) {
+        this.consultorio = consultorio;
         this.text = text;
         this.paciente = paciente;
         this.fecha = fecha;
         this.user = user;
     }
+    
+    public Turno(String consultorio, String text, Usuario user) {
+        this.consultorio = consultorio;
+        this.text = text;
+        this.user = user;
+    }
 
-
-
-    public Turno(String turnoConsultorio, String turnoText, Usuario usuario) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Long getId() {
+    public int getTurnoId() {
         return turnoId;
     }
 
-    public void setId(Long id) {
-        this.turnoId = id;
+    public void setTurnoId(int turnoId) {
+        this.turnoId = turnoId;
     }
 
     public String getConsultorio() {
@@ -87,7 +87,7 @@ public class Turno {
         return fecha;
     }
 
-    public void setVideoUrl(String fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -99,3 +99,4 @@ public class Turno {
         this.user = user;
     }
 }
+

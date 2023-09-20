@@ -24,18 +24,11 @@ public class TurnosService {
     @Autowired
     public TurnosService(TurnosRepository turnoRepository, UsuarioRepository usuarioRepository) {
         this.turnoRepository = turnoRepository;
-        this.usuarioRepository = usuarioRepository;
-    }
+        this.usuarioRepository = usuarioRepository;    } 
+  
     
-    public List<Turno> getAllTurnos() {
-        return turnoRepository.getAllTurnos();
-    }
 
-    public List<Turno> getTurnosByNombreUsuario(String nombreUsuario) {
-        return turnoRepository.getTurnosByNombreUsuario(nombreUsuario);
-    }
-
-    public Optional<Turno> getTurnosById(Long turnoId) {
+    public Optional<Turno> getTurnosById(int turnoId) {
         return turnoRepository.findById(turnoId);
     }
 
@@ -48,38 +41,22 @@ public class TurnosService {
         return turnoRepository.save(turno);
     }
 
-    public void deleteTurno(Long turnoId) {
+    public void deleteTurno(int turnoId) {
         turnoRepository.deleteById(turnoId);
     }
-
-    public List<Turno> getTurnosByUser(String user) {
-        Pageable pageable = null;
-        return turnoRepository.findTurnosByUser_NombreUsuario(user, null);
-    }
-
-    public List<Turno> getTurnosByTitle(String title) {
-        return turnoRepository.findByTitleContainingIgnoreCase(title);
-    }
-
-    public List<Turno> getTurnosByUserAndTitle(String user, String title) {
-        return turnoRepository.findByUser_NombreUsuarioAndTitleContainingIgnoreCase(user, title);
-    }
+    
 
     public Page<Turno> getPaginatedTurnos(Pageable pageable) {
         return turnoRepository.findAll(pageable);
     }
 
-    public Page<Turno> getPaginatedTurnosByUser(String user, Pageable pageable) {
-        return (Page<Turno>) turnoRepository.findTurnosByUser_NombreUsuario(user, pageable);
-    }
-
+    
     @Transactional
     public Turno createTurnoForUsuario(String nombreUsuario, String turnoConsultorio, String turnoText) {
         Usuario usuario = usuarioRepository.findByNombreUsuario(nombreUsuario)
                 .orElseThrow(() -> new IllegalArgumentException("Usuario with nombreUsuario " + nombreUsuario + " not found."));
 
-        Turno turno = new Turno(turnoConsultorio, turnoText, usuario);
-
+        Turno turno = new Turno(turnoConsultorio, turnoText, usuario); // Associate the user with the Turno
         return turnoRepository.save(turno);
     }
 }

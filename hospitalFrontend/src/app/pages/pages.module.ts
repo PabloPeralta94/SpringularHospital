@@ -9,6 +9,8 @@ import { AreaFarmaceuticaComponent } from './area-farmaceutica/area-farmaceutica
 import { AreaAdministrativaComponent } from './area-administrativa/area-administrativa.component';
 import { AreaDirectivaComponent } from './area-directiva/area-directiva.component';
 import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turnos-pendientes.component';
+import { FormsModule } from '@angular/forms';
+import { SolicitarTurnosComponent } from './area-pacientes/solicitar-turnos/solicitar-turnos.component';
 
 
 
@@ -20,12 +22,15 @@ import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turno
     AreaFarmaceuticaComponent,
     AreaAdministrativaComponent,
     AreaDirectivaComponent,
-    TurnosPendientesComponent
+    TurnosPendientesComponent,
+    SolicitarTurnosComponent 
+   
   ],
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

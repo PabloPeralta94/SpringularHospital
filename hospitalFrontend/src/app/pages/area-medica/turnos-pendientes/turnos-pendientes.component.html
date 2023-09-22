@@ -1,2 +1,18 @@
 <app-menu></app-menu>
 <p>turnos-pendientes works!</p>
+<div *ngFor="let turno of turnos">
+    <div class="card  rounded border-dark post">
+       <img src="../../../assets/pesca.jpg" class="card-img" alt="un pescador">
+       <div class="card-img-overlay text-center">
+          <h4 class="card-title text-capitalize font-weight-bold">{{turno.title}}</h4>
+          <br>
+          <br>
+          <br>
+          <p class="card-body font-weight-normal">{{turno.text}}</p> 
+          <br>
+          <br>
+          <br>               
+          <a class="card-footer font-italic font-weight-bold text-capitalize" href="/perfil/{{turno.nombreUsuario}}"><small>Creado por {{turno.nombreUsuario}}</small></a>
+       </div>
+    </div>
+ </div>

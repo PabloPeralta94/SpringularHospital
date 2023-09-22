@@ -5,6 +5,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { TurnosService } from '../../../services/turnos.service';
 import { turno } from 'src/app/interfaces/turno';
 
+
 @Component({
   selector: 'app-turnos-pendientes',
   templateUrl: './turnos-pendientes.component.html',
@@ -36,7 +37,7 @@ export class TurnosPendientesComponent implements OnInit, OnDestroy {
   public getTurnos(): void {
     this.turnoService.getTurnos().subscribe(
       (response: turno[]) => {
-        this.turnos = response.sort((a, b) => b.postId! - a.postId!);
+        this.turnos = response.sort((a, b) => b.turnoId! - a.turnoId!);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

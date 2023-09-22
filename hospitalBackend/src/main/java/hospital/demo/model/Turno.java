@@ -12,7 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import hospital.demo.security.entity.Usuario;
+
 
 @Entity
 public class Turno implements Serializable {
@@ -29,6 +32,7 @@ public class Turno implements Serializable {
 
     private String fecha;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_nombre_usuario", referencedColumnName = "nombreUsuario")
     private Usuario user;

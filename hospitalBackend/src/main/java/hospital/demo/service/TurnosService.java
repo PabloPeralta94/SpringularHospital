@@ -25,6 +25,11 @@ public class TurnosService {
     public TurnosService(TurnosRepository turnoRepository, UsuarioRepository usuarioRepository) {
         this.turnoRepository = turnoRepository;
         this.usuarioRepository = usuarioRepository;    } 
+    
+    public List<Turno> getAllTurnos() {
+		 
+		return turnoRepository.findAll();
+	}
   
     
 
@@ -59,6 +64,10 @@ public class TurnosService {
         Turno turno = new Turno(turnoConsultorio, turnoText, usuario); // Associate the user with the Turno
         return turnoRepository.save(turno);
     }
+
+
+
+	
 }
 
 

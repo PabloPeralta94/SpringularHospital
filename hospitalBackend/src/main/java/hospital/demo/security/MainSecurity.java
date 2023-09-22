@@ -61,8 +61,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
-                .anyRequest().permitAll()
+                .antMatchers("/auth/**", "/api/v1/turnos", "/api/v1/turnos/byUser").permitAll()
+                .anyRequest().permitAll()                
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()

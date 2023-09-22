@@ -33,8 +33,8 @@ import hospital.demo.service.TurnosService;
 
 @RestController
 @Transactional
+@CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/v1/turnos")
-@CrossOrigin(origins = "http://localhost:4200")
 public class TurnosController {
     private final TurnosService turnosService ;
     private final UsuarioService usuarioService;
@@ -47,6 +47,11 @@ public class TurnosController {
         this.jwtProvider = jwtProvider;
     }
     
+    @GetMapping
+    public ResponseEntity<List<Turno>> getAllTurnos() {
+        List<Turno> turno = turnosService.getAllTurnos();
+        return new ResponseEntity<>(turno, HttpStatus.OK);
+    }
 
     @GetMapping("/{turnoId}")
     public ResponseEntity<Turno> getTurnosById(@PathVariable int turnoId) {

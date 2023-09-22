@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'administracion', component: AreaAdministrativaComponent},
   {path: 'direccion', component: AreaDirectivaComponent},
   {path: 'pacientes', component: AreaPacientesComponent},
-  {path: 'turnospen', component: TurnosPendientesComponent}
+  {path: 'medica/turnospen', component: TurnosPendientesComponent}
 
 
 ];

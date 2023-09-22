@@ -11,6 +11,5 @@ import hospital.demo.model.Turno;
 
 
 public interface TurnosRepository extends JpaRepository<Turno, Integer> {
-	
 
 }

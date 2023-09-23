@@ -11,6 +11,10 @@ import { AreaDirectivaComponent } from './area-directiva/area-directiva.componen
 import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turnos-pendientes.component';
 import { FormsModule } from '@angular/forms';
 import { SolicitarTurnosComponent } from './area-pacientes/solicitar-turnos/solicitar-turnos.component';
+import { EmpleadosComponent } from './area-administrativa/empleados/empleados.component';
+import { PacientesComponent } from './area-administrativa/pacientes/pacientes.component';
+import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
+import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 
 
 
@@ -23,7 +27,11 @@ import { SolicitarTurnosComponent } from './area-pacientes/solicitar-turnos/soli
     AreaAdministrativaComponent,
     AreaDirectivaComponent,
     TurnosPendientesComponent,
-    SolicitarTurnosComponent 
+    SolicitarTurnosComponent,
+    EmpleadosComponent,
+    PacientesComponent,
+    VentasComponent,
+    RecetasComponent 
    
   ],
   imports: [

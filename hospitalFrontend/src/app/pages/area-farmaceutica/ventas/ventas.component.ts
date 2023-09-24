@@ -1,10 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { TokenService } from 'src/app/services/token.service';
+import { medicamento } from 'src/app/interfaces/medicamento';
+import { MedicamentosService } from 'src/app/services/medicamentos.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
   styleUrls: ['./ventas.component.css']
 })
-export class VentasComponent {
+export class VentasComponent implements OnInit, OnDestroy {
+  public medicamentos: medicamento[] = [];
+  isAdmin = false;
+  private medicamentoCreatedSubscription: Subscription;
 
+  constructor(
+    private medicamentosService: MedicamentosService,
+    private tokenService: TokenService
+  ) { }
+
+  ngOnInit() {
+    this.getMedicamentos();
+    this.isAdmin = this.tokenService.isAdmin();
+    ;
+  }
+
+  ngOnDestroy() {    
+  }
+
+  public getMedicamentos(): void {
+    this.medicamentosService.getMedicamentos().subscribe(
+      (response: medicamento[]) => {
+        this.medicamentos = response.sort((a, b) => b.medicamentoId - a.medicamentoId);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }

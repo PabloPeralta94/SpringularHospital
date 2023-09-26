@@ -3,6 +3,7 @@ package hospital.demo.security.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
+import hospital.demo.model.Receta;
 import hospital.demo.model.Turno;
 
 import javax.persistence.*;
@@ -38,6 +39,11 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Turno> turnos = new HashSet<>();
+    
+    
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Receta> recetas = new HashSet<>();
     
    
 
@@ -103,10 +109,17 @@ public class Usuario implements Serializable {
         return turnos;
     }
 
-    public void setPosts(Set<Turno> turnos) {
+    public void setTurnos(Set<Turno> turnos) {
         this.turnos = turnos;
     }
     
+    public Set<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(Set<Receta> recetas) {
+        this.recetas = recetas;
+    }
 
     
 }

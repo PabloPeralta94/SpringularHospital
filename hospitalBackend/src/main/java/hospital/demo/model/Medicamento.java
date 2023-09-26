@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import hospital.demo.model.Receta;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,7 +30,17 @@ public class Medicamento implements Serializable {
     private String precio;
 
     private boolean esVentaLibre;
+    
+    @OneToMany(mappedBy = "med", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Receta> recetas = new HashSet<>();
+    
+    
        
+
+	public Medicamento() {
+		super();
+	}
 
 	public Medicamento(int medicamentoId, String nombre, String descripcion, String precio, boolean esVentaLibre) {
 		super();
@@ -79,6 +90,14 @@ public class Medicamento implements Serializable {
 	public void setEsVentaLibre(boolean esVentaLibre) {
 		this.esVentaLibre = esVentaLibre;
 	}
+	
+	public Set<Receta> getRecetas() {
+        return recetas;
+    }
+
+    public void setRecetas(Set<Receta> recetas) {
+        this.recetas = recetas;
+    }
 	
     
 }

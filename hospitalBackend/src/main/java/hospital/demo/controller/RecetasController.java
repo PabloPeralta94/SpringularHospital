@@ -1,5 +1,6 @@
 package hospital.demo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -10,11 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import hospital.demo.model.Medicamento;
 import hospital.demo.model.Receta;
 import hospital.demo.repository.MedicamentosRepository;
@@ -43,6 +44,13 @@ public class RecetasController {
 		this.usuarioService = usuarioService;
 		
 	}
+	
+
+    @GetMapping
+    public ResponseEntity<List<Receta>> getAllRecetas() {
+        List<Receta> recetas = recetasService.getAllRecetas();
+        return new ResponseEntity<>(recetas, HttpStatus.OK);
+    }
 	
 	/* @PostMapping("/byUser")
     public ResponseEntity<Receta> createRecetaForUsuario(@Valid @RequestBody Receta receta,
@@ -77,8 +85,8 @@ public class RecetasController {
 	    receta.setUser(existingUsuario.get());
 	    receta.setMed(existingMedicamento.get()); 
 	   
-	    Receta createdReceta = recetasService.createReceta(receta, existingUsuario.get(), existingMedicamento.get());
-	    return new ResponseEntity<>(createdReceta, HttpStatus.CREATED);
+	    /*Receta createdReceta = recetasService.createReceta(receta, existingUsuario.get(), existingMedicamento.get()); */
+	    return new ResponseEntity<>(/*createdReceta, */HttpStatus.CREATED);
 	}
 
 

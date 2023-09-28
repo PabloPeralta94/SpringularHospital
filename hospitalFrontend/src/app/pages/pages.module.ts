@@ -15,6 +15,7 @@ import { EmpleadosComponent } from './area-administrativa/empleados/empleados.co
 import { PacientesComponent } from './area-administrativa/pacientes/pacientes.component';
 import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
 import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
+import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
 
 
 
@@ -31,7 +32,8 @@ import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component'
     EmpleadosComponent,
     PacientesComponent,
     VentasComponent,
-    RecetasComponent 
+    RecetasComponent,
+    CrearRecetaComponent 
    
   ],
   imports: [

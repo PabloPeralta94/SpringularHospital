@@ -7,20 +7,39 @@
   }
   
   .botones {
-    display: flex; /* Use flex display */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: space-between; /* Push elements to top and bottom */
-    align-items: center; /* Center elements horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 33%;
     min-width: 25%;
     max-width: 300px;
     height: auto;
-    padding: 25px;
-    border: 1px solid black;
-    margin: 25px;
-    background-color: azure;
-    text-align: center;
+    padding: 20px;
+    border: none;
+    margin: 20px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    position: relative; 
+  
+  
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
+  
+
+  .botones::before {
+    content: '\1F3E5';
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+ 
+  .botones:hover {
+    background-color: #0056b3;
+  }
+  
   
   .botones h2 {
     font-size: 1rem;
@@ -47,8 +66,17 @@
     text-overflow: ellipsis;
   }
   
-  /* Add styles for the footer and links */
+ 
   .botones .nav-link {
-    margin-top: auto; /* Push links to the bottom */
+    margin-top: auto; 
+  }
+
+  a {
+    border: black solid 1px;
+    color: white;
+  }
+
+  a:hover {
+    background-color: red; 
   }
   

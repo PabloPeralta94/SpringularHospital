@@ -98,6 +98,12 @@ public class Medicamento implements Serializable {
     public void setRecetas(Set<Receta> recetas) {
         this.recetas = recetas;
     }
+
+	@Override
+	public String toString() {
+		return "Medicamento [medicamentoId=" + medicamentoId + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", precio=" + precio + ", esVentaLibre=" + esVentaLibre + ", recetas=" + recetas + "]";
+	}
 	
     
 }

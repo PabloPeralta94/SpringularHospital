@@ -12,7 +12,7 @@ export class CrearRecetaComponent {
   consultorio: string;
   med: {
     medicamentoId: number;
-  };
+  } = { medicamentoId: 0 };
 
   constructor(private recetaService: RecetasService) { }
 

@@ -84,7 +84,15 @@ public class Receta {
 	public void setMed(Medicamento med) {
 		this.med = med;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Receta [recetaId=" + recetaId + ", consultorio=" + consultorio + ", user=" + user + ", med=" + med
+				+ "]";
+	}
 	 
+	
 
 
 }

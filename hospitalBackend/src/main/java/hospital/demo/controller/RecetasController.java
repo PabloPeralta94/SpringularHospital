@@ -69,6 +69,8 @@ public class RecetasController {
 	@PostMapping("/byUser")
 	public ResponseEntity<Receta> createRecetaForUsuario(@Valid @RequestBody Receta receta,
 	                                                   Authentication authentication) {
+		
+	    System.out.println("recetas/byUser: " + receta.toString());
 	
 	    String nombreUsuario = authentication.getName();
 

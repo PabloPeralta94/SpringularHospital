@@ -17,7 +17,7 @@ export class RecetasService {
   }
 
   public createReceta(receta: Receta): Observable<Receta> { 
-    return this.http.post<Receta>(`${this.recetasURL}/crear`, receta); 
+    return this.http.post<Receta>(`${this.recetasURL}/byUser`, receta); 
   }
 
   public updateReceta(receta: Receta): Observable<Receta> { 

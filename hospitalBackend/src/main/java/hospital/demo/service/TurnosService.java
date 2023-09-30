@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import hospital.demo.dto.turno.TurnoRequest;
+import hospital.demo.dto.turno.TurnoResponse;
 import hospital.demo.model.Turno;
 import hospital.demo.repository.TurnosRepository;
 import hospital.demo.security.entity.Usuario;
@@ -37,9 +39,18 @@ public class TurnosService {
         return turnoRepository.findById(turnoId);
     }
 
-    public Turno createTurno(Turno turno, Usuario usuario) {
-    	turno.setUser(usuario);
-        return turnoRepository.save(turno);
+    public Turno createTurno(TurnoRequest turnoRequest, Usuario usuario) {
+    	Turno nuevoTurno = new Turno();
+    	
+    	nuevoTurno.setConsultorio(turnoRequest.getConsultorio());
+    	nuevoTurno.setFecha(turnoRequest.getFecha());
+    	nuevoTurno.setPaciente(turnoRequest.getPaciente());
+    	nuevoTurno.setText(turnoRequest.getText());
+    	
+    	nuevoTurno.setUser(usuario);
+    	turnoRepository.save(nuevoTurno);
+    	
+        return nuevoTurno;
     }
 
     public Turno updateTurno(Turno turno) {
@@ -64,6 +75,21 @@ public class TurnosService {
         Turno turno = new Turno(turnoConsultorio, turnoText, usuario); // Associate the user with the Turno
         return turnoRepository.save(turno);
     }
+    
+
+	public TurnoResponse convertToResponse(Turno turno) {
+		
+		TurnoResponse turnoResponse = new TurnoResponse();
+		
+		turnoResponse.setConsultorio(turno.getConsultorio());
+		turnoResponse.setFecha(turno.getFecha());
+		turnoResponse.setPaciente(turno.getPaciente());
+		turnoResponse.setText(turno.getText());
+		turnoResponse.setTurnoId(turno.getTurnoId());
+		turnoResponse.setUsuarioId(turno.getUser().getId());	
+		
+		return turnoResponse;
+	}
 
 
 

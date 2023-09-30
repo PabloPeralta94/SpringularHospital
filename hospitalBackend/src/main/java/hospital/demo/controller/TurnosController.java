@@ -3,6 +3,7 @@ package hospital.demo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +24,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hospital.demo.dto.turno.TurnoRequest;
+import hospital.demo.dto.turno.TurnoResponse;
 import hospital.demo.model.Turno;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.TurnosService;
 
-
-
 @RestController
-@Transactional
+@Transactional // <- no deberia estar porque el controller no accede a la base, el service si
 @CrossOrigin(origins = "http://localhost:4200/")
 @RequestMapping("/api/v1/turnos")
 public class TurnosController {
+	
     private final TurnosService turnosService ;
     private final UsuarioService usuarioService;
     private final JwtProvider jwtProvider;
@@ -48,7 +50,9 @@ public class TurnosController {
     }
     
     @GetMapping
-    public ResponseEntity<List<Turno>> getAllTurnos() {
+    public ResponseEntity<List<Turno>> getAllTurnos(HttpServletRequest request) {
+    	System.out.println("/getAllTurnos: " + request);
+    	
         List<Turno> turno = turnosService.getAllTurnos();
         return new ResponseEntity<>(turno, HttpStatus.OK);
     }
@@ -61,17 +65,22 @@ public class TurnosController {
     }
 
     @PostMapping("/byUser")
-    public ResponseEntity<Turno> createTurnoForUsuario(@Valid @RequestBody Turno turno,
+    public ResponseEntity<TurnoResponse> createTurnoForUsuario(@Valid @RequestBody TurnoRequest turno,
                                                      Authentication authentication) {
         // Get the authenticated user's nombreUsuario
         String nombreUsuario = authentication.getName();
 
         Optional<Usuario> existingUsuario = usuarioService.getByNombreUsuario(nombreUsuario);
-        if (existingUsuario.isEmpty()) {
+        
+        if (!existingUsuario.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        } 
+        
         Turno createdTurno = turnosService.createTurno(turno, existingUsuario.get());
-        return new ResponseEntity<>(createdTurno, HttpStatus.CREATED);
+        
+        TurnoResponse respuesta = turnosService.convertToResponse(createdTurno);
+        
+        return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
     @PutMapping("/{postId}")

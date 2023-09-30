@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import hospital.demo.dto.turno.TurnoResponse;
 import hospital.demo.security.entity.Usuario;
 
 
@@ -102,5 +103,6 @@ public class Turno implements Serializable {
     public void setUser(Usuario user) {
         this.user = user;
     }
+
 }
 

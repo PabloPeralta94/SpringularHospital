@@ -66,8 +66,7 @@ public class TurnosController {
 
     @PostMapping("/byUser")
     public ResponseEntity<TurnoResponse> createTurnoForUsuario(@Valid @RequestBody TurnoRequest turno,
-                                                     Authentication authentication) {
-        // Get the authenticated user's nombreUsuario
+                                                     Authentication authentication) {       
         String nombreUsuario = authentication.getName();
 
         Optional<Usuario> existingUsuario = usuarioService.getByNombreUsuario(nombreUsuario);

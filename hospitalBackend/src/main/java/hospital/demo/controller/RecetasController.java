@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import hospital.demo.dto.receta.RecetaRequest;
+import hospital.demo.dto.receta.RecetaResponse;
 import hospital.demo.model.Medicamento;
 import hospital.demo.model.Receta;
-import hospital.demo.repository.MedicamentosRepository;
-import hospital.demo.repository.RecetasRepository;
 import hospital.demo.security.entity.Usuario;
-import hospital.demo.security.repository.UsuarioRepository;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.MedicamentosService;
 import hospital.demo.service.RecetasService;
@@ -30,12 +32,15 @@ import hospital.demo.service.RecetasService;
 
 @RestController
 @Transactional
-@RequestMapping("/recetas")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1/receta")
 public class RecetasController {
 	private final UsuarioService usuarioService;
 	private final MedicamentosService medicamentosService;
 	private final RecetasService recetasService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(RecetasController.class);
+
 	
 	@Autowired
 	public RecetasController(UsuarioService usuarioService, MedicamentosService medicamentosService, RecetasService recetasService) {
@@ -50,46 +55,33 @@ public class RecetasController {
     public ResponseEntity<List<Receta>> getAllRecetas() {
         List<Receta> recetas = recetasService.getAllRecetas();
         return new ResponseEntity<>(recetas, HttpStatus.OK);
-    }
+    }	
 	
-	/* @PostMapping("/byUser")
-    public ResponseEntity<Receta> createRecetaForUsuario(@Valid @RequestBody Receta receta,
-                                                     Authentication authentication) {
-        // Get the authenticated user's nombreUsuario
+    @PostMapping("/byUser")
+    public ResponseEntity<RecetaResponse> createRecetaForUsuario(@Valid @RequestBody RecetaRequest receta,
+                                                               Authentication authentication) {	   
+    	
         String nombreUsuario = authentication.getName();
+        logger.info("Received a request to create a receta for user: {}", nombreUsuario);
 
         Optional<Usuario> existingUsuario = usuarioService.getByNombreUsuario(nombreUsuario);
-        if (existingUsuario.isEmpty()) {
+        if (!existingUsuario.isPresent()) {
+            logger.error("User not found: {}", nombreUsuario);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        Receta createdReceta = recetasService.createReceta(receta, existingUsuario.get());
-        return new ResponseEntity<>(createdReceta, HttpStatus.CREATED);
-    } */
-	
-	@PostMapping("/byUser")
-	public ResponseEntity<Receta> createRecetaForUsuario(@Valid @RequestBody Receta receta,
-	                                                   Authentication authentication) {
-		
-	    System.out.println("recetas/byUser: " + receta.toString());
-	
-	    String nombreUsuario = authentication.getName();
+        }  
 
-	    Optional<Usuario> existingUsuario = usuarioService.getByNombreUsuario(nombreUsuario);
-	    if (existingUsuario.isEmpty()) {
-	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);	    }
-	 
-	    Integer medicamentoId = receta.getMed().getMedicamentoId(); 
-	   
-	    Optional<Medicamento> existingMedicamento = medicamentosService.getMedicamentoById(medicamentoId);
-	    if (existingMedicamento.isEmpty()) {
-	        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
-	    receta.setUser(existingUsuario.get());
-	    receta.setMed(existingMedicamento.get()); 
-	   
-	    /*Receta createdReceta = recetasService.createReceta(receta, existingUsuario.get(), existingMedicamento.get()); */
-	    return new ResponseEntity<>(/*createdReceta, */HttpStatus.CREATED);
-	}
+        Optional<Medicamento> existingMedicamento = medicamentosService.getMedicamentoById(receta.getMedicamentoId());
+        if (!existingMedicamento.isPresent()) {
+            logger.error("Medicamento not found with ID: {}", receta.getMedicamentoId());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } 
+
+        Receta CreatedReceta = recetasService.createReceta(receta, existingUsuario.get(), existingMedicamento.get());
+        logger.info("Receta created successfully");
+
+        RecetaResponse respuesta = recetasService.convertToResponse(CreatedReceta);   
+        return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
+    }
 
 
 	

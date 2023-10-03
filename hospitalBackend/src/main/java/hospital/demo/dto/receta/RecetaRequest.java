@@ -1,8 +1,7 @@
 package hospital.demo.dto.receta;
 
 public class RecetaRequest {
-    protected String consultorio;
-    protected Integer usuarioId;
+    protected String consultorio;   
     protected Integer medicamentoId;
     
     
@@ -11,10 +10,9 @@ public class RecetaRequest {
 	}
 
 
-	public RecetaRequest(String consultorio, Integer usuarioId, Integer medicamentoId) {
+	public RecetaRequest(String consultorio, Integer medicamentoId) {
 		super();
-		this.consultorio = consultorio;
-		this.usuarioId = usuarioId;
+		this.consultorio = consultorio;		
 		this.medicamentoId = medicamentoId;
 	}
 
@@ -29,16 +27,6 @@ public class RecetaRequest {
 	}
 
 
-	public Integer getUsuarioId() {
-		return usuarioId;
-	}
-
-
-	public void setUsuarioId(Integer usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-
-
 	public Integer getMedicamentoId() {
 		return medicamentoId;
 	}
@@ -47,8 +35,26 @@ public class RecetaRequest {
 	public void setMedicamentoId(Integer medicamentoId) {
 		this.medicamentoId = medicamentoId;
 	}
+
+
+	@Override
+	public String toString() {
+		return "RecetaRequest [consultorio=" + consultorio + ", medicamentoId=" + medicamentoId + "]";
+	}
+	
+	
+
+
+}
+    
+    
+    
+    
+	
+    
+    
+
 	
 	
 
     
-}

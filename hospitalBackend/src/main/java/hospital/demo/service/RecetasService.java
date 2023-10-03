@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import hospital.demo.dto.receta.RecetaRequest;
+import hospital.demo.dto.receta.RecetaResponse;
 import hospital.demo.model.Medicamento;
 import hospital.demo.model.Receta;
 import hospital.demo.repository.MedicamentosRepository;
@@ -32,10 +35,13 @@ public class RecetasService {
 		return recetasRepository.findAll();
 	}
 	
-	public Receta createReceta(Receta receta, Usuario usuario, Medicamento medicamento) {
-        receta.setUser(usuario);
-        receta.setMed(medicamento);
-        return recetasRepository.save(receta);
+	public Receta createReceta(RecetaRequest recetaRequest, Usuario usuario, Medicamento medicamento) {   
+		Receta nuevaReceta = new Receta();
+		
+		nuevaReceta.setConsultorio(recetaRequest.getConsultorio());
+		nuevaReceta.setUser(usuario);
+		nuevaReceta.setMed(medicamento);
+        return recetasRepository.save(nuevaReceta);
     }
 	
 	public Receta updateReceta(Receta receta) {
@@ -45,6 +51,18 @@ public class RecetasService {
 	public void deleteReceta(Integer recetaId) {
         recetasRepository.deleteById(recetaId);
     }
+	
+	public RecetaResponse convertToResponse(Receta receta) {	
+	    RecetaResponse recetaResponse = new RecetaResponse();
+	
+	    recetaResponse.setRecetaId(receta.getRecetaId());
+	    recetaResponse.setConsultorio(receta.getConsultorio());
+	    recetaResponse.setUsuarioId(receta.getUser().getId());
+	    recetaResponse.setMedicamentoId(receta.getMed().getMedicamentoId());
+	 
+	    return recetaResponse;
+	}
+
 
 
 }

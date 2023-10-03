@@ -1,5 +1,7 @@
 package hospital.demo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +16,7 @@ import hospital.demo.security.entity.Usuario;
 
 
 @Entity
-public class Receta {
+public class Receta implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

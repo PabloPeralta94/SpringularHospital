@@ -25,7 +25,7 @@ public class MedicamentosService {
   
     
 
-    public Optional<Medicamento> getMedicamentoById(int medicamentoId) {
+    public Optional<Medicamento> getMedicamentoById(Integer medicamentoId) {
         return medicamentosRepository.findById(medicamentoId);
     }
 

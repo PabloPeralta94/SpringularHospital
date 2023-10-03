@@ -1,5 +1,6 @@
 package hospital.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,12 +54,22 @@ public class RecetasController {
 		
 	}
 	
+	
+	
+	
 
-    @GetMapping
-    public ResponseEntity<List<Receta>> getAllRecetas() {
-        List<Receta> recetas = recetasService.getAllRecetas();
-        return new ResponseEntity<>(recetas, HttpStatus.OK);
-    }	
+	@GetMapping
+	public ResponseEntity<List<RecetaResponse>> getAllRecetas() {
+	    List<Receta> recetas = recetasService.getAllRecetas();
+	    List<RecetaResponse> recetaResponses = new ArrayList<>();
+
+	    for (Receta receta : recetas) {
+	        RecetaResponse recetaResponse = recetasService.convertToResponse(receta);
+	        recetaResponses.add(recetaResponse);
+	    }
+
+	    return new ResponseEntity<>(recetaResponses, HttpStatus.OK);
+	}	
 	
     @PostMapping("/byUser")
     public ResponseEntity<RecetaResponse> createRecetaForUsuario(@Valid @RequestBody RecetaRequest receta,
@@ -82,6 +96,43 @@ public class RecetasController {
         RecetaResponse respuesta = recetasService.convertToResponse(CreatedReceta);   
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
+    
+    @PutMapping("/{recetaId}")
+    public ResponseEntity<RecetaResponse> updateReceta(
+        @PathVariable Integer recetaId,
+        @Valid @RequestBody RecetaRequest updatedReceta) {
+        Optional<Receta> existingReceta = recetasService.getRecetaById(recetaId);
+        if (!existingReceta.isPresent()) {
+            logger.error("Receta not found with ID: {}", recetaId);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+ 
+        Receta recetaToUpdate = existingReceta.get();      
+      
+        Receta updatedRecetaObj = recetasService.updateReceta(recetaToUpdate, updatedReceta);
+        
+        RecetaResponse respuesta = recetasService.convertToResponse(updatedRecetaObj);
+
+        return new ResponseEntity<>(respuesta, HttpStatus.OK);
+    }
+    
+    @DeleteMapping("/{recetaId}")
+    public ResponseEntity<Void> deleteReceta(@PathVariable Integer recetaId) {
+        Optional<Receta> existingReceta = recetasService.getRecetaById(recetaId);
+
+        if (!existingReceta.isPresent()) {
+            logger.error("Receta not found with ID: {}", recetaId);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        recetasService.deleteReceta(recetaId);
+
+        logger.info("Receta deleted successfully with ID: {}", recetaId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
 
 
 	

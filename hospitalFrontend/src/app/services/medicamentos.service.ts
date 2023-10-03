@@ -16,6 +16,10 @@ export class MedicamentosService {
     return this.http.get<medicamento[]>(`${this.medicamentosURL}`);
   }
 
+  public getMedicamentosById(medicamentoId: number): Observable<medicamento> {
+    return this.http.get<medicamento>(`${this.medicamentosURL}/${medicamentoId}`);
+  }
+
   public createMedicamento(medicamento: medicamento): Observable<medicamento> {
     return this.http.post<medicamento>(`${this.medicamentosURL}/crear`, medicamento);
   }

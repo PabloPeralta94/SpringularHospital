@@ -1,6 +1,7 @@
 package hospital.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,13 @@ public class RecetasService {
         return recetasRepository.save(nuevaReceta);
     }
 	
-	public Receta updateReceta(Receta receta) {
-        return recetasRepository.save(receta);
-    }
+	@Transactional
+	public Receta updateReceta(Receta receta, RecetaRequest updatedReceta) {               
+	        receta.setEstaAprobada(receta.getEstaAprobada());         
+	        return recetasRepository.save(receta);
+	    } 
+	
+
 	
 	public void deleteReceta(Integer recetaId) {
         recetasRepository.deleteById(recetaId);
@@ -63,6 +68,10 @@ public class RecetasService {
 	    recetaResponse.setEstaAprobado(receta.getEstaAprobada());
 	 
 	    return recetaResponse;
+	}
+
+	public Optional<Receta> getRecetaById(Integer recetaId) {		
+		return recetasRepository.findById(recetaId);
 	}
 
 

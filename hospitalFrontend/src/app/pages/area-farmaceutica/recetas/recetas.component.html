@@ -1,1 +1,16 @@
-<p>recetas works!</p>
+<app-menu></app-menu>
+<div class="turno-container">
+  <div *ngFor="let receta of recetas" class="card rounded border-dark post">
+    <div class="text-center">
+      <h4 class="card-title text-capitalize font-weight-bold">{{receta.consultorio}}</h4>
+      <br>
+      <br>
+      <br>
+      <p class="card-body font-weight-normal">medicamento {{ getMedicamentoName(receta.medicamentoId)}}</p>
+      <br>
+      <br>
+      <br>
+      <a class="card-footer font-italic font-weight-bold text-capitalize"><small>Profesional {{receta.usuarioId}}</small></a>
+    </div>
+  </div>
+</div>

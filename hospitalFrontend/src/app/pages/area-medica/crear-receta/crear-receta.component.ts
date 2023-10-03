@@ -10,28 +10,27 @@ import { Receta } from 'src/app/interfaces/receta';
 export class CrearRecetaComponent {
   recetaId?: number;
   consultorio: string;
-  med: {
-    medicamentoId: number;
-  } = { medicamentoId: 0 };
+  medicamentoId: number;
+
 
   constructor(private recetaService: RecetasService) { }
 
   onSubmit() {
     const receta: Receta = {
       consultorio: this.consultorio,
-      med: {
-        medicamentoId: this.med.medicamentoId
-      }
+      medicamentoId: this.medicamentoId
     };
-  
+
     this.recetaService.createReceta(receta).subscribe(
       (createdReceta) => {
-        console.log('Created Receta:', createdReceta);       
+        this.consultorio = "";
+        this.medicamentoId = 0;
+        alert("Receta Creada con Exito");
+        console.log('Created Receta:', createdReceta);
       },
       (error) => {
         console.error('Error creating turno:', error);
       }
     );
   }
-  
 }

@@ -1,8 +1,9 @@
 export interface Receta {
     recetaId?: number;
-    consultorio: string;
-    med: {
-      medicamentoId: number;
-    };
+    consultorio: string;  
+    medicamentoId: number;
+    usuarioId?: number;
+    estaAprobado?: boolean;
+          
   }
   

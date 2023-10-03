@@ -5,5 +5,5 @@ export const environment = {
     postURL: 'http://localhost:8080/api/v1/turnos',
     friendURL: 'http://localhost:8080/api/v1/friends',
     medicamentosUrl: 'http://localhost:8080/medicamentos',
-    recetasUrl: 'http://localhost:8080/recetas'
+    recetasUrl: 'http://localhost:8080/api/v1/receta'
 };

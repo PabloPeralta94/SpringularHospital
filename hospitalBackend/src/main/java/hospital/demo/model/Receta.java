@@ -24,6 +24,8 @@ public class Receta implements Serializable {
 	
 	private String consultorio;
 	
+	private Boolean estaAprobada;
+	
 	 @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	    @JoinColumn(name = "user_nombre_usuario", referencedColumnName = "nombreUsuario")
 	    private Usuario user;
@@ -39,10 +41,11 @@ public class Receta implements Serializable {
 	}
 
 
-	public Receta(Integer recetaId, String consultorio, Usuario user, Medicamento med) {
+	public Receta(Integer recetaId, String consultorio, Boolean estaAprobada, Usuario user, Medicamento med) {
 		super();
 		this.recetaId = recetaId;
 		this.consultorio = consultorio;
+		this.estaAprobada = estaAprobada;
 		this.user = user;
 		this.med = med;
 	}
@@ -68,6 +71,16 @@ public class Receta implements Serializable {
 	}
 
 
+	public Boolean getEstaAprobada() {
+		return estaAprobada;
+	}
+
+
+	public void setEstaAprobada(Boolean estaAprobada) {
+		this.estaAprobada = estaAprobada;
+	}
+
+
 	public Usuario getUser() {
 		return user;
 	}
@@ -90,10 +103,17 @@ public class Receta implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Receta [recetaId=" + recetaId + ", consultorio=" + consultorio + ", user=" + user + ", med=" + med
-				+ "]";
+		return "Receta [recetaId=" + recetaId + ", consultorio=" + consultorio + ", estaAprobada=" + estaAprobada
+				+ ", user=" + user + ", med=" + med + "]";
 	}
-	 
+	
+	
+
+
+	
+
+
+	
 	
 
 

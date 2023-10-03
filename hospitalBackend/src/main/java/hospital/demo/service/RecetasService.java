@@ -36,11 +36,12 @@ public class RecetasService {
 	}
 	
 	public Receta createReceta(RecetaRequest recetaRequest, Usuario usuario, Medicamento medicamento) {   
-		Receta nuevaReceta = new Receta();
+		Receta nuevaReceta = new Receta();	
 		
 		nuevaReceta.setConsultorio(recetaRequest.getConsultorio());
 		nuevaReceta.setUser(usuario);
 		nuevaReceta.setMed(medicamento);
+		nuevaReceta.setEstaAprobada(false);
         return recetasRepository.save(nuevaReceta);
     }
 	
@@ -59,6 +60,7 @@ public class RecetasService {
 	    recetaResponse.setConsultorio(receta.getConsultorio());
 	    recetaResponse.setUsuarioId(receta.getUser().getId());
 	    recetaResponse.setMedicamentoId(receta.getMed().getMedicamentoId());
+	    recetaResponse.setEstaAprobado(receta.getEstaAprobada());
 	 
 	    return recetaResponse;
 	}

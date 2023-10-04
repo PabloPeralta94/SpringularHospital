@@ -19,20 +19,27 @@ export class RecetasComponent {
 
   ngOnInit() {
     this.getRecetas();
+    
   }
 
-  getMedicamentoName(medicamentoId: number): void {
+  getMedicamentoName(medicamentoId: number): string {
+    let medicamentoNombre = ''; // Initialize with an empty string
+    
     this.medicamentosService.getMedicamentosById(medicamentoId)
       .subscribe(
-        (medicamento) => {         
-          return medicamento.nombre;
+        (medicamento) => {
+          console.log(medicamento); // Log the medicamento before returning
+          medicamentoNombre = medicamento.nombre; // Assign the nombre property
         },
         (error) => {
           console.error('Error getting medicamento:', error);
-          return 'Medicamento not found';
+          medicamentoNombre = 'Medicamento not found'; // Assign the error message
         }
       );
+  
+    return medicamentoNombre; // Return the assigned value
   }
+  
   
 
 

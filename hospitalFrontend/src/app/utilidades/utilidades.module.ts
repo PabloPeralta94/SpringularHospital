@@ -14,6 +14,9 @@ import { ComprasComponent } from './compras/compras.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ComprasComponent
   ]
 })
 export class UtilidadesModule { }

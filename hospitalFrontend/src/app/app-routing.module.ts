@@ -17,6 +17,7 @@ import { SolicitarTurnosComponent } from './pages/area-pacientes/solicitar-turno
 import { VentasComponent } from './pages/area-farmaceutica/ventas/ventas.component';
 import { CrearRecetaComponent } from './pages/area-medica/crear-receta/crear-receta.component';
 import { RecetasComponent } from './pages/area-farmaceutica/recetas/recetas.component';
+import { ComprarComponent } from './pages/area-farmaceutica/comprar/comprar.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'turnospen', component: TurnosPendientesComponent},  
   {path: 'solicturno', component: SolicitarTurnosComponent},
   {path: 'ventas', component: VentasComponent},
+  {path: 'comprar', component: ComprarComponent},
   {path: 'recetas/crear', component: CrearRecetaComponent},
   {path: 'recetas', component: RecetasComponent}
 

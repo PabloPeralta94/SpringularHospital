@@ -16,6 +16,9 @@ import { PacientesComponent } from './area-administrativa/pacientes/pacientes.co
 import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
 import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
+import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component';
+import { UtilidadesModule } from '../utilidades/utilidades.module';
+
 
 
 
@@ -33,14 +36,18 @@ import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.co
     PacientesComponent,
     VentasComponent,
     RecetasComponent,
-    CrearRecetaComponent 
+    CrearRecetaComponent,
+    ComprarComponent
    
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    UtilidadesModule
+   
+
   ]
 })
 export class PagesModule { }

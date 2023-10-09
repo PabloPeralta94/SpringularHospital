@@ -1,59 +1,54 @@
 package hospital.demo.dto.turno;
 
+import java.time.LocalDate;
+
 public class TurnoRequest {
-	protected String consultorio;
+    protected String consultorio;
+    protected String text;
+    protected String paciente;
+    protected LocalDate fecha; 
 
-	protected String text;
+    public TurnoRequest() {
+        super();
+    }
 
-	protected String paciente;
+    public TurnoRequest(String consultorio, String text, String paciente, LocalDate fecha) { // Update the constructor
+        super();
+        this.consultorio = consultorio;
+        this.text = text;
+        this.paciente = paciente;
+        this.fecha = fecha;
+    }
 
-	protected String fecha;
+    public String getConsultorio() {
+        return consultorio;
+    }
 
-	public TurnoRequest() {
-		super();
-	}
-	
-	public TurnoRequest(String consultorio, String text, String paciente, String fecha) {
-		super();
-		this.consultorio = consultorio;
-		this.text = text;
-		this.paciente = paciente;
-		this.fecha = fecha;
-	}
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
+    }
 
+    public String getText() {
+        return text;
+    }
 
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public String getConsultorio() {
-		return consultorio;
-	}
+    public String getPaciente() {
+        return paciente;
+    }
 
-	public void setConsultorio(String consultorio) {
-		this.consultorio = consultorio;
-	}
+    public void setPaciente(String paciente) {
+        this.paciente = paciente;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public LocalDate getFecha() { // Change the return type to LocalDate
+        return fecha;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
-
-	public String getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(String paciente) {
-		this.paciente = paciente;
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-	
-	
+    public void setFecha(LocalDate fecha) { // Change the parameter type to LocalDate
+        this.fecha = fecha;
+    }
 }

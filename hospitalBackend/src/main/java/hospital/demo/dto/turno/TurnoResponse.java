@@ -1,94 +1,75 @@
 package hospital.demo.dto.turno;
 
+import java.time.LocalDate;
+
 public class TurnoResponse {
-	protected Integer turnoId;
-	protected String consultorio;
+    protected Integer turnoId;
+    protected String consultorio;
+    protected String text;
+    protected String paciente;
+    protected LocalDate fecha; 
+    protected Integer usuarioId; 
 
-	protected String text;
+    public TurnoResponse() {
+        super();
+    }
 
-	protected String paciente;
+    public TurnoResponse(Integer turnoId, String consultorio, String text, String paciente, LocalDate fecha, Integer usuarioId) {
+        super();
+        this.turnoId = turnoId;
+        this.consultorio = consultorio;
+        this.text = text;
+        this.paciente = paciente;
+        this.fecha = fecha;
+        this.usuarioId = usuarioId;
+    }
 
-	protected String fecha;
-	protected Integer usuarioId;
-	
-		
-	public TurnoResponse() {
-		super();
-	}
+    public Integer getTurnoId() {
+        return turnoId;
+    }
 
+    public void setTurnoId(Integer turnoId) {
+        this.turnoId = turnoId;
+    }
 
-	public TurnoResponse(Integer turnoId, String consultorio, String text, String paciente, String fecha,
-			Integer usuarioId) {
-		super();
-		this.turnoId = turnoId;
-		this.consultorio = consultorio;
-		this.text = text;
-		this.paciente = paciente;
-		this.fecha = fecha;
-		this.usuarioId = usuarioId;
-	}
+    public String getConsultorio() {
+        return consultorio;
+    }
 
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
+    }
 
-	public Integer getTurnoId() {
-		return turnoId;
-	}
+    public String getText() {
+        return text;
+    }
 
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	public void setTurnoId(Integer turnoId) {
-		this.turnoId = turnoId;
-	}
+    public String getPaciente() {
+        return paciente;
+    }
 
+    public void setPaciente(String paciente) {
+        this.paciente = paciente;
+    }
 
-	public String getConsultorio() {
-		return consultorio;
-	}
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
-	public void setConsultorio(String consultorio) {
-		this.consultorio = consultorio;
-	}
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
 
-
-	public String getText() {
-		return text;
-	}
-
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
-
-	public String getPaciente() {
-		return paciente;
-	}
-
-
-	public void setPaciente(String paciente) {
-		this.paciente = paciente;
-	}
-
-
-	public String getFecha() {
-		return fecha;
-	}
-
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
-
-
-	public Integer getUsuarioId() {
-		return usuarioId;
-	}
-
-
-	public void setUsuarioId(Integer usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-	
-	
-	
-	
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
+    }
 }
+

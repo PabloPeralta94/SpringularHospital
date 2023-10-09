@@ -1,4 +1,4 @@
-package hospital.demo.model;
+	package hospital.demo.model;
 
 import java.io.Serializable;
 
@@ -18,6 +18,9 @@ import hospital.demo.dto.turno.TurnoResponse;
 import hospital.demo.security.entity.Usuario;
 
 
+import javax.persistence.*;
+import java.time.LocalDate;
+
 @Entity
 public class Turno implements Serializable {
     @Id
@@ -31,7 +34,8 @@ public class Turno implements Serializable {
 
     private String paciente;
 
-    private String fecha;
+    @Column(columnDefinition = "DATE") // Define the column as DATE type in the database
+    private LocalDate fecha; // Change the type to LocalDate
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -42,14 +46,14 @@ public class Turno implements Serializable {
 
     }
 
-    public Turno(String consultorio, String text, String paciente, String fecha, Usuario user) {
+    public Turno(String consultorio, String text, String paciente, LocalDate fecha, Usuario user) {
         this.consultorio = consultorio;
         this.text = text;
         this.paciente = paciente;
         this.fecha = fecha;
         this.user = user;
     }
-    
+
     public Turno(String consultorio, String text, Usuario user) {
         this.consultorio = consultorio;
         this.text = text;
@@ -88,11 +92,11 @@ public class Turno implements Serializable {
         this.paciente = paciente;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -103,6 +107,5 @@ public class Turno implements Serializable {
     public void setUser(Usuario user) {
         this.user = user;
     }
-
 }
 

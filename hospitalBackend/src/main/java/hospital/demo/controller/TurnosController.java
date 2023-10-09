@@ -30,7 +30,7 @@ import hospital.demo.model.Turno;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.UsuarioService;
-import hospital.demo.service.TurnosService;
+import hospital.demo.service.TurnoService;
 
 @RestController
 @Transactional // <- no deberia estar porque el controller no accede a la base, el service si
@@ -38,13 +38,13 @@ import hospital.demo.service.TurnosService;
 @RequestMapping("/api/v1/turnos")
 public class TurnosController {
 	
-    private final TurnosService turnosService ;
+    private final TurnoService turnoService ;
     private final UsuarioService usuarioService;
     private final JwtProvider jwtProvider;
 
     @Autowired
-    public TurnosController(TurnosService turnoService, UsuarioService usuarioService, JwtProvider jwtProvider) {
-        this.turnosService = turnoService;
+    public TurnosController(TurnoService turnoService, UsuarioService usuarioService, JwtProvider jwtProvider) {
+        this.turnoService = turnoService;
         this.usuarioService = usuarioService;
         this.jwtProvider = jwtProvider;
     }
@@ -53,13 +53,13 @@ public class TurnosController {
     public ResponseEntity<List<Turno>> getAllTurnos(HttpServletRequest request) {
     	System.out.println("/getAllTurnos: " + request);
     	
-        List<Turno> turno = turnosService.getAllTurnos();
+        List<Turno> turno = turnoService.getAllTurnos();
         return new ResponseEntity<>(turno, HttpStatus.OK);
     }
 
     @GetMapping("/{turnoId}")
     public ResponseEntity<Turno> getTurnosById(@PathVariable int turnoId) {
-        Optional<Turno> post = turnosService.getTurnosById(turnoId);
+        Optional<Turno> post = turnoService.getTurnosById(turnoId);
         return post.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -75,33 +75,33 @@ public class TurnosController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } 
         
-        Turno createdTurno = turnosService.createTurno(turno, existingUsuario.get());
+        Turno createdTurno = turnoService.createTurno(turno, existingUsuario.get());
         
-        TurnoResponse respuesta = turnosService.convertToResponse(createdTurno);
+        TurnoResponse respuesta = turnoService.convertToResponse(createdTurno);
         
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
     @PutMapping("/{postId}")
     public ResponseEntity<Turno> updatePost(@PathVariable int turnoId, @Valid @RequestBody Turno turno) {
-        Optional<Turno> existingTurno = turnosService.getTurnosById(turnoId);
+        Optional<Turno> existingTurno = turnoService.getTurnosById(turnoId);
         if (existingTurno.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         turno.setTurnoId(turnoId);
-        Turno updatedPost = turnosService.updateTurno(turno);
+        Turno updatedPost = turnoService.updateTurno(turno);
         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
     }
 
     @DeleteMapping("/{postId}")
     public ResponseEntity<String> deletePost(@PathVariable int turnoId) {
-        Optional<Turno> turno = turnosService.getTurnosById(turnoId);
+        Optional<Turno> turno = turnoService.getTurnosById(turnoId);
         if (turno.isEmpty()) {
             return new ResponseEntity<>("Post not found", HttpStatus.NOT_FOUND);
         }
 
-        turnosService.deleteTurno(turnoId);
+        turnoService.deleteTurno(turnoId);
         return new ResponseEntity<>("Post deleted successfully", HttpStatus.NO_CONTENT);
     }
 
@@ -110,7 +110,7 @@ public class TurnosController {
 
     @GetMapping("/paginated")
     public ResponseEntity<Page<Turno>> getPaginatedTurnos(Pageable pageable) {
-        Page<Turno> turno = turnosService.getPaginatedTurnos(pageable);
+        Page<Turno> turno = turnoService.getPaginatedTurnos(pageable);
         return new ResponseEntity<>(turno, HttpStatus.OK);
     }
 

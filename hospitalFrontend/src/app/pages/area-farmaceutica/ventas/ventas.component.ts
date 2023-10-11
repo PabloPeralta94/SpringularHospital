@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TokenService } from 'src/app/services/token.service';
-import { medicamento } from 'src/app/interfaces/medicamento';
+import { Medicamento } from 'src/app/interfaces/medicamento';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit, OnDestroy {
-  public medicamentos: medicamento[] = [];
+  public medicamentos: Medicamento[] = [];
   isAdmin = false;
   private medicamentoCreatedSubscription: Subscription;
 
@@ -31,7 +31,7 @@ export class VentasComponent implements OnInit, OnDestroy {
 
   public getMedicamentos(): void {
     this.medicamentosService.getMedicamentos().subscribe(
-      (response: medicamento[]) => {
+      (response: Medicamento[]) => {
         this.medicamentos = response.sort((a, b) => b.medicamentoId - a.medicamentoId);
       },
       (error: HttpErrorResponse) => {

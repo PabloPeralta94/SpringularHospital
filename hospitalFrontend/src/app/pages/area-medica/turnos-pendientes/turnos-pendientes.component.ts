@@ -3,7 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TokenService } from 'src/app/services/token.service';
 import { TurnosService } from '../../../services/turnos.service';
-import { turno } from 'src/app/interfaces/turno';
+import { Turno } from 'src/app/interfaces/turno';
+
 
 
 @Component({
@@ -12,7 +13,7 @@ import { turno } from 'src/app/interfaces/turno';
   styleUrls: ['./turnos-pendientes.component.css']
 })
 export class TurnosPendientesComponent implements OnInit, OnDestroy {
-  public turnos: turno[] = [];
+  public turnos: Turno[] = [];
   isAdmin = false;
   private postCreatedSubscription: Subscription;
 
@@ -36,7 +37,7 @@ export class TurnosPendientesComponent implements OnInit, OnDestroy {
 
   public getTurnos(): void {
     this.turnoService.getTurnos().subscribe(
-      (response: turno[]) => {
+      (response: Turno[]) => {
         this.turnos = response.sort((a, b) => b.turnoId! - a.turnoId!);
       },
       (error: HttpErrorResponse) => {

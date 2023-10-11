@@ -1,4 +1,4 @@
-export class medicamento {
+export class Medicamento {
     medicamentoId: number;
     nombre: string;
     descripcion: string;

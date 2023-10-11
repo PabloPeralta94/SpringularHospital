@@ -1,4 +1,4 @@
-export class turno {
+export class Turno {
     turnoId?: number;
     consultorio: string;
     text: string;

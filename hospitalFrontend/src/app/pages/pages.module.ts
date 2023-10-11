@@ -17,7 +17,7 @@ import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
 import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
 import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component';
-import { UtilidadesModule } from '../utilidades/utilidades.module';
+
 
 
 
@@ -44,9 +44,7 @@ import { UtilidadesModule } from '../utilidades/utilidades.module';
     CommonModule,
     RouterModule,
     SharedModule,
-    FormsModule,
-    UtilidadesModule
-   
+    FormsModule   
 
   ]
 })

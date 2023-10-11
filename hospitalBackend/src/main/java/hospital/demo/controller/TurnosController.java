@@ -82,8 +82,8 @@ public class TurnosController {
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{postId}")
-    public ResponseEntity<Turno> updatePost(@PathVariable int turnoId, @Valid @RequestBody Turno turno) {
+    @PutMapping("/{turnoId}")
+    public ResponseEntity<Turno> updateTurno(@PathVariable int turnoId, @Valid @RequestBody Turno turno) {
         Optional<Turno> existingTurno = turnoService.getTurnosById(turnoId);
         if (existingTurno.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -94,15 +94,15 @@ public class TurnosController {
         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{postId}")
-    public ResponseEntity<String> deletePost(@PathVariable int turnoId) {
+    @DeleteMapping("/{turnoId}")
+    public ResponseEntity<String> deleteTurno(@PathVariable int turnoId) {
         Optional<Turno> turno = turnoService.getTurnosById(turnoId);
         if (turno.isEmpty()) {
             return new ResponseEntity<>("Post not found", HttpStatus.NOT_FOUND);
         }
 
         turnoService.deleteTurno(turnoId);
-        return new ResponseEntity<>("Post deleted successfully", HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>("Turno deleted successfully", HttpStatus.NO_CONTENT);
     }
 
    

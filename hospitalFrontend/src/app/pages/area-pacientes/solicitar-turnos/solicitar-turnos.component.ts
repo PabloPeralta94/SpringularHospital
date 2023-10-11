@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TurnosService } from 'src/app/services/turnos.service';
-import { turno } from 'src/app/interfaces/turno';
+import { Turno } from 'src/app/interfaces/turno';
 
 @Component({
   selector: 'app-solicitar-turnos',
@@ -16,7 +16,7 @@ export class SolicitarTurnosComponent {
   constructor(private turnoService: TurnosService) { }
 
   onSubmit() {
-    const turno: turno = {
+    const turno: Turno = {
       consultorio: this.turnoConsultorio,
       text: this.turnoBody,
       paciente: this.turnoPaciente,

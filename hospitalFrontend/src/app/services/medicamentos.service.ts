@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { medicamento } from '../interfaces/medicamento';
+import { Medicamento } from '../interfaces/medicamento';
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +12,20 @@ export class MedicamentosService {
 
   constructor(private http: HttpClient) { }
 
-  public getMedicamentos(): Observable<medicamento[]> {
-    return this.http.get<medicamento[]>(`${this.medicamentosURL}`);
+  public getMedicamentos(): Observable<Medicamento[]> {
+    return this.http.get<Medicamento[]>(`${this.medicamentosURL}`);
   }
 
-  public getMedicamentosById(medicamentoId: number): Observable<medicamento> {
-    return this.http.get<medicamento>(`${this.medicamentosURL}/${medicamentoId}`);
+  public getMedicamentosById(medicamentoId: number): Observable<Medicamento> {
+    return this.http.get<Medicamento>(`${this.medicamentosURL}/${medicamentoId}`);
   }
 
-  public createMedicamento(medicamento: medicamento): Observable<medicamento> {
-    return this.http.post<medicamento>(`${this.medicamentosURL}/crear`, medicamento);
+  public createMedicamento(medicamento: Medicamento): Observable<Medicamento> {
+    return this.http.post<Medicamento>(`${this.medicamentosURL}/crear`, medicamento);
   }
 
-  public updateMedicamento(medicamento: medicamento): Observable<medicamento> {
-    return this.http.put<medicamento>(`${this.medicamentosURL}/${medicamento.medicamentoId}`, medicamento);
+  public updateMedicamento(medicamento: Medicamento): Observable<Medicamento> {
+    return this.http.put<Medicamento>(`${this.medicamentosURL}/${medicamento.medicamentoId}`, medicamento);
   }
 
   public deleteMedicamento(medicamentoId: number): Observable<void> {

@@ -44,11 +44,11 @@ public class TurnoRequest {
         this.paciente = paciente;
     }
 
-    public LocalDate getFecha() { // Change the return type to LocalDate
+    public LocalDate getFecha() { 
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) { // Change the parameter type to LocalDate
+    public void setFecha(LocalDate fecha) { 
         this.fecha = fecha;
     }
 }

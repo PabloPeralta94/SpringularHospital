@@ -21,9 +21,9 @@ import { ComprarComponent } from './pages/area-farmaceutica/comprar/comprar.comp
 
 
 const routes: Routes = [
-  { path: '', component: MainComponent }, 
-  { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegistroComponent },
+  {path: '', component: MainComponent }, 
+  {path: 'login', component: LoginComponent },
+  {path: 'registro', component: RegistroComponent },
   {path: 'index', component: InicioComponent/*,  canActivate: [LoginGuard]*/},
   {path: 'medica', component: AreaMedicaComponent},
   {path: 'enfermeria', component: AreaEnfermeriaComponent},

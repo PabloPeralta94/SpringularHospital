@@ -39,42 +39,37 @@ import hospital.demo.service.RecetaService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/receta")
 public class RecetasController {
-	private final UsuarioService usuarioService;
-	private final MedicamentoService medicamentoService;
-	private final RecetaService recetaService;
-	
-	private static final Logger logger = LoggerFactory.getLogger(RecetasController.class);
+    private final UsuarioService usuarioService;
+    private final MedicamentoService medicamentoService;
+    private final RecetaService recetaService;
 
-	
-	@Autowired
-	public RecetasController(UsuarioService usuarioService, MedicamentoService medicamentoService, RecetaService recetaService) {
-		this.recetaService = recetaService;
-		this.medicamentoService = medicamentoService;
-		this.usuarioService = usuarioService;
-		
-	}
-	
-	
-	
-	
+    private static final Logger logger = LoggerFactory.getLogger(RecetasController.class);
 
-	@GetMapping
-	public ResponseEntity<List<RecetaResponse>> getAllRecetas() {
-	    List<Receta> recetas = recetaService.getAllRecetas();
-	    List<RecetaResponse> recetaResponses = new ArrayList<>();
+    @Autowired
+    public RecetasController(UsuarioService usuarioService, MedicamentoService medicamentoService, RecetaService recetaService) {
+        this.recetaService = recetaService;
+        this.medicamentoService = medicamentoService;
+        this.usuarioService = usuarioService;
+    }
 
-	    for (Receta receta : recetas) {
-	        RecetaResponse recetaResponse = recetaService.convertToResponse(receta);
-	        recetaResponses.add(recetaResponse);
-	    }
+    // Get all recetas
+    @GetMapping
+    public ResponseEntity<List<RecetaResponse>> getAllRecetas() {
+        List<Receta> recetas = recetaService.getAllRecetas();
+        List<RecetaResponse> recetaResponses = new ArrayList<>();
 
-	    return new ResponseEntity<>(recetaResponses, HttpStatus.OK);
-	}	
-	
+        for (Receta receta : recetas) {
+            RecetaResponse recetaResponse = recetaService.convertToResponse(receta);
+            recetaResponses.add(recetaResponse);
+        }
+
+        return new ResponseEntity<>(recetaResponses, HttpStatus.OK);
+    }
+
+    // Create a receta for a user
     @PostMapping("/byUser")
     public ResponseEntity<RecetaResponse> createRecetaForUsuario(@Valid @RequestBody RecetaRequest receta,
-                                                               Authentication authentication) {	   
-    	
+                                                               Authentication authentication) {
         String nombreUsuario = authentication.getName();
         logger.info("Received a request to create a receta for user: {}", nombreUsuario);
 
@@ -82,40 +77,40 @@ public class RecetasController {
         if (!existingUsuario.isPresent()) {
             logger.error("User not found: {}", nombreUsuario);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }  
+        }
 
         Optional<Medicamento> existingMedicamento = medicamentoService.getMedicamentoById(receta.getMedicamentoId());
         if (!existingMedicamento.isPresent()) {
             logger.error("Medicamento not found with ID: {}", receta.getMedicamentoId());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } 
+        }
 
-        Receta CreatedReceta = recetaService.createReceta(receta, existingUsuario.get(), existingMedicamento.get());
+        Receta createdReceta = recetaService.createReceta(receta, existingUsuario.get(), existingMedicamento.get());
         logger.info("Receta created successfully");
 
-        RecetaResponse respuesta = recetaService.convertToResponse(CreatedReceta);   
+        RecetaResponse respuesta = recetaService.convertToResponse(createdReceta);
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
-    
+
+    // Update a receta
     @PutMapping("/{recetaId}")
     public ResponseEntity<RecetaResponse> updateReceta(
-        @PathVariable Integer recetaId,
-        @Valid @RequestBody RecetaRequest updatedReceta) {
+            @PathVariable Integer recetaId,
+            @Valid @RequestBody RecetaRequest updatedReceta) {
         Optional<Receta> existingReceta = recetaService.getRecetaById(recetaId);
         if (!existingReceta.isPresent()) {
             logger.error("Receta not found with ID: {}", recetaId);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
- 
-        Receta recetaToUpdate = existingReceta.get();      
-      
-        Receta updatedRecetaObj = recetaService.updateReceta(recetaToUpdate, updatedReceta);
-        
-        RecetaResponse respuesta = recetaService.convertToResponse(updatedRecetaObj);
 
+        Receta recetaToUpdate = existingReceta.get();
+        Receta updatedRecetaObj = recetaService.updateReceta(recetaToUpdate, updatedReceta);
+
+        RecetaResponse respuesta = recetaService.convertToResponse(updatedRecetaObj);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
-    
+
+    // Delete a receta
     @DeleteMapping("/{recetaId}")
     public ResponseEntity<Void> deleteReceta(@PathVariable Integer recetaId) {
         Optional<Receta> existingReceta = recetaService.getRecetaById(recetaId);
@@ -131,10 +126,5 @@ public class RecetasController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
-
-
-	
-
 }
+

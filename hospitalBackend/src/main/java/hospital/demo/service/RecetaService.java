@@ -47,9 +47,12 @@ public class RecetaService {
     }
 	
 	@Transactional
-	public Receta updateReceta(Receta receta, RecetaRequest updatedReceta) {               
-	        receta.setEstaAprobada(receta.getEstaAprobada());         
-	        return recetasRepository.save(receta);
+	public Receta updateReceta(Receta receta, RecetaRequest recetaRequest) {		
+		   Medicamento medicamento = medicamentosRepository.getById(recetaRequest.getMedicamentoId());
+		
+		   receta.setConsultorio(recetaRequest.getConsultorio());
+		   receta.setMed(medicamento); 
+	       return recetasRepository.save(receta);
 	    } 
 	
 

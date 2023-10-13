@@ -96,7 +96,7 @@ public class RecetasController {
     @PutMapping("/{recetaId}")
     public ResponseEntity<RecetaResponse> updateReceta(
             @PathVariable Integer recetaId,
-            @Valid @RequestBody RecetaRequest updatedReceta) {
+            @Valid @RequestBody RecetaRequest recetaRequest) {
         Optional<Receta> existingReceta = recetaService.getRecetaById(recetaId);
         if (!existingReceta.isPresent()) {
             logger.error("Receta not found with ID: {}", recetaId);
@@ -104,9 +104,9 @@ public class RecetasController {
         }
 
         Receta recetaToUpdate = existingReceta.get();
-        Receta updatedRecetaObj = recetaService.updateReceta(recetaToUpdate, updatedReceta);
+        recetaToUpdate = recetaService.updateReceta(recetaToUpdate, recetaRequest);
 
-        RecetaResponse respuesta = recetaService.convertToResponse(updatedRecetaObj);
+        RecetaResponse respuesta = recetaService.convertToResponse(recetaToUpdate);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
 

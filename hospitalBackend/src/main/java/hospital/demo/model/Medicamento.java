@@ -83,7 +83,7 @@ public class Medicamento implements Serializable {
 		this.precio = precio;
 	}
 
-	public boolean isEsVentaLibre() {
+	public boolean getEsVentaLibre() {
 		return esVentaLibre;
 	}
 

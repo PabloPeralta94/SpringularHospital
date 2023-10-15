@@ -18,6 +18,7 @@ import { VentasComponent } from './pages/area-farmaceutica/ventas/ventas.compone
 import { CrearRecetaComponent } from './pages/area-medica/crear-receta/crear-receta.component';
 import { RecetasComponent } from './pages/area-farmaceutica/recetas/recetas.component';
 import { ComprarComponent } from './pages/area-farmaceutica/comprar/comprar.component';
+import { MostrarTurnosPacienteComponent } from './pages/area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'ventas', component: VentasComponent},
   {path: 'comprar', component: ComprarComponent},
   {path: 'recetas/crear', component: CrearRecetaComponent},
-  {path: 'recetas', component: RecetasComponent}
+  {path: 'recetas', component: RecetasComponent},
+  {path: 'misturno', component: MostrarTurnosPacienteComponent}
 
 
 ];

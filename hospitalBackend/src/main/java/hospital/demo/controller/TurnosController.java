@@ -33,6 +33,7 @@ import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.TurnoService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/turnos")
 public class TurnosController {
     private final TurnoService turnoService;
@@ -54,7 +55,20 @@ public class TurnosController {
         List<Turno> turnos = turnoService.getAllTurnos();
         return new ResponseEntity<>(turnos, HttpStatus.OK);
     }
+    
+    @GetMapping("/byUser")
+    public ResponseEntity<List<Turno>> getTurnoByUser(Authentication authentication) {
+        String username = authentication.getName();
 
+        Optional<Usuario> usuario = usuarioService.getByNombreUsuario(username);
+
+        if (usuario.isPresent()) {
+            List<Turno> turnos = turnoService.getTurnosByUsuario(usuario.get());
+            return new ResponseEntity<>(turnos, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     // Get a turno by ID
     @GetMapping("/{turnoId}")
     public ResponseEntity<Turno> getTurnosById(@PathVariable int turnoId) {

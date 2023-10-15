@@ -17,6 +17,7 @@ import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
 import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
 import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component';
+import { MostrarTurnosPacienteComponent } from './area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
 
 
 
@@ -37,7 +38,8 @@ import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component'
     VentasComponent,
     RecetasComponent,
     CrearRecetaComponent,
-    ComprarComponent
+    ComprarComponent,
+    MostrarTurnosPacienteComponent
    
   ],
   imports: [

@@ -25,6 +25,10 @@ export class TurnosService {postURL = environment.postURL;
     return this.http.get<Turno[]>(`${this.postURL}/byUser?nombreUsuario=${nombreUsuario}`);
   }  
 
+  public getUserSelfTurnos(): Observable<Turno[]> {
+    return this.http.get<Turno[]>(`${this.postURL}/byUser`);
+  }
+
   public updateTurno(turnoId: number, turno: Turno): Observable<Turno> {
     return this.http.put<Turno>(`${this.postURL}/${turnoId}`, turno);
   }

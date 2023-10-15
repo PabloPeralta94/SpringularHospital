@@ -1,0 +1,17 @@
+<app-menu></app-menu>>
+<div class="turno-container">
+    <div *ngFor="let turno of turnos" class="card rounded border-dark post">
+      <div class="text-center">
+        <h4 class="card-title text-capitalize font-weight-bold">Asistir en {{ turno.consultorio }}</h4>
+        <br>       
+        <br>
+        <p>Motivo del turno:</p>
+        <p class="card-body font-weight-normal">{{ turno.text }}</p>
+        <br>
+        <p>Fecha del turno:</p>
+        <p>{{ turno.fecha| date:'yyyy-MM-dd' }}</p>
+        <br>
+        <a class="card-footer font-italic font-weight-bold text-capitalize"><small>Paciente {{ turno.paciente }}</small></a>
+      </div>
+    </div>
+  </div>

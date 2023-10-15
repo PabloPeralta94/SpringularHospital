@@ -1,30 +1,31 @@
 <app-menu></app-menu>
 <div class="postear">
-    <div class="card bg-dark ">
-    <div class="card-header text">  
-    <h2>Solicita tu turno.</h2>
-</div>
-<div class="card-body">
-    <form (ngSubmit)="onSubmit()">          
+  <div class="card bg-dark">
+    <div class="card-header text">
+      <h2>Solicita tu turno.</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group text">
-        <label for="turno_consultorio">Consultorio</label> 
-          <input id="turno_consultorio"  name="turno_consultorio" type="text" class="validate form-control" [(ngModel)]="turnoConsultorio">
-                     
-      </div>          
+          <label for="turno_consultorio">Consultorio</label>
+          <input id="turno_consultorio" name="turno_consultorio" type="text" class="validate form-control" [(ngModel)]="turnoConsultorio">
+        </div>
         <div class="form-group text">
-        <label for="turno_body">Texto</label> 
+          <label for="turno_body">Texto</label>
           <textarea id="turno_body" name="turno_body" class="materialize-textarea form-control" [(ngModel)]="turnoBody"></textarea>
-                     
-      </div>        
-      <div class="form-group text">
-        <label for="turno_fecha">Fecha</label> 
-          <textarea id="turno_fecha" name="turno_fecha" class="materialize-textarea form-control" [(ngModel)]="turnoFecha"></textarea>
-                     
-      </div>               
+        </div>
         <div class="form-group text">
-          <button class="btn btn-outline-success btn-block text" type="submit"><i class="fas fa-sign-in-alt"></i>Publicar</button>
-        </div>          
-    </form>
-</div>
-</div>
+          <label for="turno_paciente">Paciente</label>
+          <input id="turno_paciente" name="turno_paciente" class="materialize-textarea form-control" [(ngModel)]="turnoPaciente">
+        </div>
+        <div class="form-group text">
+          <label for="turno_fecha">Fecha</label>
+          <input id="turno_fecha" name="turno_fecha" type="date" class="form-control" [(ngModel)]="turnoFecha">
+        </div>
+        <div class="form-group text">
+          <button class="btn btn-outline-success btn-block text" type="submit"><i class="fas fa-sign-in-alt"></i> Publicar</button>
+        </div>
+      </form>
+    </div>
   </div>
+</div>

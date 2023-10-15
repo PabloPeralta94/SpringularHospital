@@ -64,17 +64,7 @@ public class TurnoService {
 
     public Page<Turno> getPaginatedTurnos(Pageable pageable) {
         return turnoRepository.findAll(pageable);
-    }
-
-    
-    @Transactional
-    public Turno createTurnoForUsuario(String nombreUsuario, String turnoConsultorio, String turnoText) {
-        Usuario usuario = usuarioRepository.findByNombreUsuario(nombreUsuario)
-                .orElseThrow(() -> new IllegalArgumentException("Usuario with nombreUsuario " + nombreUsuario + " not found."));
-
-        Turno turno = new Turno(turnoConsultorio, turnoText, usuario); // Associate the user with the Turno
-        return turnoRepository.save(turno);
-    }
+    }   
     
 
 	public TurnoResponse convertToResponse(Turno turno) {
@@ -90,6 +80,11 @@ public class TurnoService {
 		
 		return turnoResponse;
 	}
+
+	public List<Turno> getTurnosByUsuario(Usuario usuario) {
+        // Assuming you have a TurnoRepository to interact with the database
+        return turnoRepository.findByUser(usuario);
+    }
 
 
 

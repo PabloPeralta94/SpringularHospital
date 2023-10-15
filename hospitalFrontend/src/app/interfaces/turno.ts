@@ -3,6 +3,6 @@ export class Turno {
     consultorio: string;
     text: string;
     paciente: string;
-    fecha: string;
+    fecha: Date | null;
     nombreUsuario?: string;
-}
+  }

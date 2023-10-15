@@ -11,16 +11,16 @@ export class SolicitarTurnosComponent {
   turnoConsultorio: string;
   turnoBody: string;
   turnoPaciente: string;
-  turnoFecha: string;
+  turnoFecha: Date | null;
 
   constructor(private turnoService: TurnosService) { }
 
   onSubmit() {
-    const turno: Turno = {
+    const turno = {
       consultorio: this.turnoConsultorio,
       text: this.turnoBody,
       paciente: this.turnoPaciente,
-      fecha: this.turnoFecha
+      fecha: this.turnoFecha,
     };
 
     this.turnoService.createTurno(turno).subscribe(
@@ -28,10 +28,9 @@ export class SolicitarTurnosComponent {
         console.log('Created Turno:', createdTurno);
         this.turnoConsultorio = '';
         this.turnoBody = '';
-        this.turnoPaciente ="";
-        this.turnoFecha ="";
+        this.turnoPaciente = '';
+        this.turnoFecha = null;
         this.turnoService.emitTurnoCreated();
-         
       },
       (error) => {
         console.error('Error creating turno:', error);

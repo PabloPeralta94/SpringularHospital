@@ -10,10 +10,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import hospital.demo.dto.receta.RecetaRequest;
 import hospital.demo.dto.tarea.TareaRequest;
 import hospital.demo.dto.tarea.TareaResponse;
 import hospital.demo.dto.turno.TurnoRequest;
 import hospital.demo.dto.turno.TurnoResponse;
+import hospital.demo.model.Medicamento;
+import hospital.demo.model.Receta;
 import hospital.demo.model.Tarea;
 import hospital.demo.model.Turno;
 import hospital.demo.repository.TareaRepository;
@@ -59,9 +62,20 @@ public class TareaService {
         return nuevaTarea;
     }
 	
-	public Tarea updateTarea(Tarea tarea) {
-        return tareaRepository.save(tarea);
-    }
+	@Transactional
+	public Tarea updateTarea(Tarea tarea, TareaRequest tareaRequest) {			   
+		
+		   tarea.setNombre (tareaRequest.getNombre());
+		   tarea.setDescripcion(tareaRequest.getDescripcion());
+		   tarea.setEnfermeraAsignada(tareaRequest.getEnfermeraAsignada());
+		   tarea.setPrioridad(tareaRequest.getPrioridad());
+		   tarea.setPacienteAsociado(tareaRequest.getPacienteAsociado());
+		   tarea.setUbicacion(tareaRequest.getUbicacion());
+		   tarea.setNotas(tareaRequest.getNotas());
+		   
+	       return tareaRepository.save(tarea);
+	    } 
+	
 	
 	public void deleteTarea(int tareaId) {
         tareaRepository.deleteById(tareaId);
@@ -96,5 +110,11 @@ public TareaResponse convertToResponse(Tarea tarea) {
     return tareaRepository.findByUsuario(usuario);
 }
 
+	public Optional<Tarea> getTareaById(Integer tareaId) {		
+		return tareaRepository.findById(tareaId);
+	}
 
-}
+	}
+
+
+

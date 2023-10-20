@@ -1,0 +1,68 @@
+.postear {    
+    display: flex;
+    justify-content: center;
+    align-items: center;       
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+  .card.bg-dark {
+    
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 80%; 
+    max-width: 400px; 
+    border: none; 
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+  }
+  
+ 
+  .card-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  
+  .form-group {
+    margin: 15px 0;
+  }
+  
+  
+  .form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+ 
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 5px;
+    color: white;
+  }
+  
+  
+  .form-group button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+ 
+  .form-group button[type="submit"]:hover {
+    background-color: #0056b3; 
+  }
+  
+  
+  .form-group.text {
+    text-align: center;
+  }
+  

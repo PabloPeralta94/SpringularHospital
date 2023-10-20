@@ -1,1 +1,25 @@
-<p>ver-tareas works!</p>
+<div class="turno-container">
+    <div *ngFor="let tarea of tareas" class="card rounded border-dark post">
+      <div class="text-center">
+        <h4 class="card-title text-capitalize font-weight-bold">{{ tarea.nombre }}</h4>
+        <p class="card-body font-weight-normal">{{ tarea.notas }}</p>
+        <a class="card-footer font-italic font-weight-bold text-capitalize">
+          <small>Paciente {{ tarea.pacienteAsociado }}</small>
+        </a>
+        <div>
+          <p class="font-weight-bold">Tarea Details:</p>
+          <ul>
+            <li><strong>Tarea ID:</strong> {{ tarea.tareaId }}</li>
+            <li><strong>Fecha de Inicio:</strong> {{ tarea.fechaInicio }}</li>
+            <li><strong>Fecha de Fin:</strong> {{ tarea.fechaFin }}</li>
+            <li><strong>Enfermera Asignada:</strong> {{ tarea.enfermeraAsignada }}</li>
+            <li><strong>Estado:</strong> {{ tarea.estado }}</li>
+            <li><strong>Prioridad:</strong> {{ tarea.prioridad }}</li>
+            <li><strong>Ubicación:</strong> {{ tarea.ubicacion }}</li>
+            <li><strong>Usuario ID:</strong> {{ tarea.usuarioId }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

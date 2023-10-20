@@ -1,13 +1,13 @@
 export class Tarea {
-   tareaId: number;
+   tareaId?: number;
    nombre: string;
-   fechaInicio: Date | null;
-   fechaFin: Date | null;
+   fechaInicio?: Date | null;
+   fechaFin?: Date | null;
    enfermeraAsignada: string;
-   estado: string;
+   estado?: string;
    prioridad: string;
    pacienteAsociado: string;
    ubicacion: string;
    notas: string;
-   usuarioId: number;
+   usuarioId?: number;
 }

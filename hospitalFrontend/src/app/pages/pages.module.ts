@@ -18,6 +18,8 @@ import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component'
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
 import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component';
 import { MostrarTurnosPacienteComponent } from './area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
+import { VerTareasComponent } from './area-enfermeria/ver-tareas/ver-tareas.component';
+import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.component';
 
 
 
@@ -39,7 +41,9 @@ import { MostrarTurnosPacienteComponent } from './area-pacientes/mostrar-turnos-
     RecetasComponent,
     CrearRecetaComponent,
     ComprarComponent,
-    MostrarTurnosPacienteComponent
+    MostrarTurnosPacienteComponent,
+    VerTareasComponent,
+    CrearTareaComponent
    
   ],
   imports: [

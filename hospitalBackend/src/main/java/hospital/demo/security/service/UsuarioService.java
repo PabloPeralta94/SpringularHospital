@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.repository.UsuarioRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -36,6 +37,11 @@ public class UsuarioService {
     public Optional<Usuario> getById(int id) {
         return usuarioRepository.findById(id);
     }
+
+	public List<Usuario> getAllUsuarios() {
+		
+		return usuarioRepository.findAll();
+	}
 
    
 }

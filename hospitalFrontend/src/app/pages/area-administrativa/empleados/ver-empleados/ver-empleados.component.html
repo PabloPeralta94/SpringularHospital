@@ -1,1 +1,17 @@
-<p>ver-empleados works!</p>
+<div>
+    <h1>Worker Information</h1>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Position</th>
+        <th>Age</th>
+        <th>Salary</th>
+      </tr>
+      <tr *ngFor="let worker of workers">
+        <td>{{ worker.name }}</td>
+        <td>{{ worker.position }}</td>
+        <td>{{ worker.age }}</td>
+        <td>${{ worker.salary | number: '1.2-2' }}</td>
+      </tr>
+    </table>
+  </div>

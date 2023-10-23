@@ -7,4 +7,37 @@ import { Component } from '@angular/core';
 })
 export class VerEmpleadosComponent {
 
+  workers = [
+    {
+      name: 'John Doe',
+      position: 'Manager',
+      age: 35,
+      salary: 60000
+    },
+    {
+      name: 'Jane Smith',
+      position: 'Engineer',
+      age: 28,
+      salary: 50000
+    },
+    {
+      name: 'Mike Johnson',
+      position: 'Technician',
+      age: 40,
+      salary: 45000
+    },
+    {
+      name: 'Sarah Brown',
+      position: 'Designer',
+      age: 30,
+      salary: 55000
+    },
+    {
+      name: 'David Wilson',
+      position: 'Analyst',
+      age: 32,
+      salary: 58000
+    }
+  ];
+
 }

@@ -20,6 +20,8 @@ import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component'
 import { MostrarTurnosPacienteComponent } from './area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
 import { VerTareasComponent } from './area-enfermeria/ver-tareas/ver-tareas.component';
 import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.component';
+import { VerEmpleadosComponent } from './area-administrativa/empleados/ver-empleados/ver-empleados.component';
+import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar-empleados/editar-empleados.component';
 
 
 
@@ -43,7 +45,9 @@ import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.c
     ComprarComponent,
     MostrarTurnosPacienteComponent,
     VerTareasComponent,
-    CrearTareaComponent
+    CrearTareaComponent,
+    VerEmpleadosComponent,
+    EditarEmpleadosComponent
    
   ],
   imports: [

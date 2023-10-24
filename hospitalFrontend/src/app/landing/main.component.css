@@ -1,11 +1,22 @@
+.body {
+  background-image: url('src/assets/landing.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color:  #3498db; /* Light background color for cleanliness */
+  background-color: rgba(52, 152, 219, 0.5); /* Blue color with 50% transparency */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
   height: auto;
 }
+
 
 .logger {
   width: 70%;
@@ -14,7 +25,8 @@
 }
 
 .colores {
-  background-color: #3498db; /* A calming blue color associated with trust and professionalism */
+  background-color: rgba(52, 152, 219, 0.5); /* Blue color with 50% transparency */
   box-shadow: 0 0 20px rgba(52, 152, 219, 0.6); /* Shadow with the blue accent */
   color: #FFFFFF; /* Text color for better readability */
 }
+

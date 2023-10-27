@@ -30,9 +30,9 @@ public class UsuariosController {
     
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios() {
-        List<Usuario> usuarios = usuarioService.getAllUsuarios(); // Define this method in UsuarioService
+        List<Usuario> usuarios = usuarioService.getAllUsuarios();
         if (usuarios.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Return a 204 status code if no users are found
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(usuarios, HttpStatus.OK);
     }

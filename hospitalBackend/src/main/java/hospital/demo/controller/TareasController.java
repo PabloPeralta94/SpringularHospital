@@ -47,9 +47,8 @@ public class TareasController {
     public TareasController(TareaService tareaService, UsuarioService usuarioService) {
         this.tareaService = tareaService;
         this.usuarioService = usuarioService;
-    }
-    
- // Get all recetas
+    }    
+
     @GetMapping
     public ResponseEntity<List<TareaResponse>> getAllTareas() {
         List<Tarea> tareas = tareaService.getAllTareas();

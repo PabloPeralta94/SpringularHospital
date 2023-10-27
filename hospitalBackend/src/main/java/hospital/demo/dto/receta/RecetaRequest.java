@@ -41,10 +41,6 @@ public class RecetaRequest {
 	public String toString() {
 		return "RecetaRequest [consultorio=" + consultorio + ", medicamentoId=" + medicamentoId + "]";
 	}
-	
-	
-
-
 }
     
     

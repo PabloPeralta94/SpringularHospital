@@ -105,10 +105,9 @@ public TareaResponse convertToResponse(Tarea tarea) {
 		return tareaResponse;
 	}
 
-    public List<Tarea> getTareasByUsuario(Usuario usuario) {
-    // Assuming you have a TurnoRepository to interact with the database
-    return tareaRepository.findByUsuario(usuario);
-}
+    public List<Tarea> getTareasByUsuario(Usuario usuario) {    
+    return tareaRepository.findByUsuario(usuario);}
+    
 
 	public Optional<Tarea> getTareaById(Integer tareaId) {		
 		return tareaRepository.findById(tareaId);

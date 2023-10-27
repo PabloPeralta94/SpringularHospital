@@ -51,8 +51,7 @@ public class RecetasController {
         this.medicamentoService = medicamentoService;
         this.usuarioService = usuarioService;
     }
-
-    // Get all recetas
+   
     @GetMapping
     public ResponseEntity<List<RecetaResponse>> getAllRecetas() {
         List<Receta> recetas = recetaService.getAllRecetas();
@@ -65,8 +64,7 @@ public class RecetasController {
 
         return new ResponseEntity<>(recetaResponses, HttpStatus.OK);
     }
-
-    // Create a receta for a user
+    
     @PostMapping("/byUser")
     public ResponseEntity<RecetaResponse> createRecetaForUsuario(@Valid @RequestBody RecetaRequest receta,
                                                                Authentication authentication) {
@@ -91,8 +89,7 @@ public class RecetasController {
         RecetaResponse respuesta = recetaService.convertToResponse(createdReceta);
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
-
-    // Update a receta
+    
     @PutMapping("/{recetaId}")
     public ResponseEntity<RecetaResponse> updateReceta(
             @PathVariable Integer recetaId,
@@ -109,8 +106,7 @@ public class RecetasController {
         RecetaResponse respuesta = recetaService.convertToResponse(recetaToUpdate);
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
-
-    // Delete a receta
+    
     @DeleteMapping("/{recetaId}")
     public ResponseEntity<Void> deleteReceta(@PathVariable Integer recetaId) {
         Optional<Receta> existingReceta = recetaService.getRecetaById(recetaId);

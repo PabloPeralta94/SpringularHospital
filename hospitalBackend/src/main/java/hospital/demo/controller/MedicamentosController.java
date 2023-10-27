@@ -42,9 +42,7 @@ public class MedicamentosController {
     
     private static final Logger logger = LoggerFactory.getLogger(MedicamentosController.class);
 
-    /**
-     * Create a new Medicamento.
-     */
+    
     @PostMapping("/byUser")
     public ResponseEntity<MedicamentoResponse> createMedicamentoForUsuario(@Valid @RequestBody MedicamentoRequest medicamento,
                                                                Authentication authentication) {
@@ -58,27 +56,18 @@ public class MedicamentosController {
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
-    /**
-     * Get a list of all Medicamentos.
-     */
     @GetMapping
     public ResponseEntity<List<Medicamento>> getAllMedicamentos() {
         List<Medicamento> medicamentos = medicamentoService.getAllMedicamentos();
         return ResponseEntity.ok(medicamentos);
     }
-
-    /**
-     * Get a Medicamento by its ID.
-     */
+    
     @GetMapping("/{id}")
     public ResponseEntity<Medicamento> getMedicamentoById(@PathVariable("id") int medicamentoId) {
         Optional<Medicamento> medicamento = medicamentoService.getMedicamentoById(medicamentoId);
         return medicamento.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
-
-    /**
-     * Update an existing Medicamento.
-     */
+    
     @PutMapping("/update/{id}")
     public ResponseEntity<Medicamento> updateMedicamento(@PathVariable("id") int medicamentoId, @RequestBody Medicamento updatedMedicamento) {
         if (medicamentoService.getMedicamentoById(medicamentoId).isPresent()) {
@@ -89,10 +78,7 @@ public class MedicamentosController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    /**
-     * Delete a Medicamento by its ID.
-     */
+    
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteMedicamento(@PathVariable("id") int medicamentoId) {
         Optional<Medicamento> medicamento = medicamentoService.getMedicamentoById(medicamentoId);

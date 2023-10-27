@@ -86,9 +86,6 @@ public class MedicamentoResponse {
 
 	public void setRecetaId(int recetaId) {
 		this.recetaId = recetaId;
-	}
-    
-    
-    
+	}   
 
 }

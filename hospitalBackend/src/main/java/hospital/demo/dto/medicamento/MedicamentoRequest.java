@@ -54,11 +54,5 @@ public class MedicamentoRequest {
 	public void setPrecio(String precio) {
 		this.precio = precio;
 	}
-    
-    
-
-	
-    
-
 
 }

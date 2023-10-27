@@ -81,8 +81,7 @@ public class TurnoService {
 		return turnoResponse;
 	}
 
-	public List<Turno> getTurnosByUsuario(Usuario usuario) {
-        // Assuming you have a TurnoRepository to interact with the database
+	public List<Turno> getTurnosByUsuario(Usuario usuario) {       
         return turnoRepository.findByUser(usuario);
     }
 

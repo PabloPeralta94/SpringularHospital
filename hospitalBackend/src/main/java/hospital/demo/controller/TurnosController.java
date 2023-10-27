@@ -46,8 +46,7 @@ public class TurnosController {
         this.usuarioService = usuarioService;
         this.jwtProvider = jwtProvider;
     }
-
-    // Get all turnos
+    
     @GetMapping
     public ResponseEntity<List<Turno>> getAllTurnos(HttpServletRequest request) {
         System.out.println("/getAllTurnos: " + request);
@@ -69,15 +68,14 @@ public class TurnosController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    // Get a turno by ID
+    
     @GetMapping("/{turnoId}")
     public ResponseEntity<Turno> getTurnosById(@PathVariable int turnoId) {
         Optional<Turno> turno = turnoService.getTurnosById(turnoId);
         return turno.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
-    // Create a turno for a user
+    
     @PostMapping("/byUser")
     public ResponseEntity<TurnoResponse> createTurnoForUsuario(@Valid @RequestBody TurnoRequest turno,
                                                               Authentication authentication) {
@@ -95,8 +93,7 @@ public class TurnosController {
 
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
-
-    // Update a turno
+   
     @PutMapping("/{turnoId}")
     public ResponseEntity<Turno> updateTurno(@PathVariable int turnoId, @Valid @RequestBody Turno turno) {
         Optional<Turno> existingTurno = turnoService.getTurnosById(turnoId);
@@ -108,8 +105,7 @@ public class TurnosController {
         Turno updatedTurno = turnoService.updateTurno(turno);
         return new ResponseEntity<>(updatedTurno, HttpStatus.OK);
     }
-
-    // Delete a turno
+    
     @DeleteMapping("/{turnoId}")
     public ResponseEntity<String> deleteTurno(@PathVariable int turnoId) {
         Optional<Turno> turno = turnoService.getTurnosById(turnoId);
@@ -120,8 +116,7 @@ public class TurnosController {
         turnoService.deleteTurno(turnoId);
         return new ResponseEntity<>("Turno deleted successfully", HttpStatus.NO_CONTENT);
     }
-
-    // Get paginated turnos
+    
     @GetMapping("/paginated")
     public ResponseEntity<Page<Turno>> getPaginatedTurnos(Pageable pageable) {
         Page<Turno> turnos = turnoService.getPaginatedTurnos(pageable);

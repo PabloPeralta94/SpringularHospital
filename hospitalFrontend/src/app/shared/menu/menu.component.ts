@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
-import { faHospital } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faHospital } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +9,7 @@ import { faHospital } from '@fortawesome/free-solid-svg-icons';
 })
 export class MenuComponent implements OnInit {
   hospitalIcon = faHospital;
+  faArrowLeft = faArrowLeft;
 
   isLogged = false;
   isAdmin = false;

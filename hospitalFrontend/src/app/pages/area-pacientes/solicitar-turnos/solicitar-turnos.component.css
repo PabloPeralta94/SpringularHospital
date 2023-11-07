@@ -10,13 +10,13 @@
 
   .card.bg-dark {
     
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(3, 13, 64, 0.8);
     color: white;
     width: 80%; 
     max-width: 400px; 
     border: none; 
     border-radius: 10px; 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0px 0px 10px rgba(16, 4, 188, 0.2); 
   }
   
  
@@ -40,7 +40,7 @@
   .form-control {
     width: 100%;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.1); 
+    background-color: rgba(66, 57, 241, 0.1); 
     border-radius: 5px;
     color: white;
   }

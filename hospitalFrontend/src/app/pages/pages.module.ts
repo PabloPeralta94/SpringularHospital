@@ -55,7 +55,8 @@ import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar
     RouterModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule   
+    ReactiveFormsModule,
+       
 
   ]
 })

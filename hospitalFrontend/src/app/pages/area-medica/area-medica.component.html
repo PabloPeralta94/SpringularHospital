@@ -1,112 +1,15 @@
 <app-menu></app-menu>
-<p *ngIf="isAdmin || isMedic">Bienvenido Doctor ""</p>
+<p *ngIf="isAdmin || isMedic">Bienvenido Doctor</p>
 <div class="container-main">    
-    <div class="botones ">
-        <h2>Consultorio de<br>Medicina General</h2>
-        <br>
-        <p>Este consultorio ofrece atención médica primaria para una amplia variedad de condiciones médicas y realiza exámenes de rutina.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/solicturno">Solicitar turnos</a>
-        </div>
-        <span>Dr. Juan Perez</span>
-    </div>
-    <div class="botones" >
-        <h2>Consultorio de<br>Pediatría</h2>
-        <br>
-        <p>Este consultorio se especializa en el cuidado de niños y adolescentes, abordando problemas de salud específicos para estas edades.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dra. Maria Rodriguez</span>
-    </div>
-    <div class="botones " >
-        <h2>Consultorio de<br>Ginecología y Obstetricia</h2>
-        <br>
-        <p>Este consultorio brinda atención médica a mujeres, incluyendo exámenes ginecológicos, control prenatal y atención obstétrica.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dr. Carlos Gonzalez</span>
-    </div>
-    <div class="botones " >
-        <h2>Consultorio de<br>Dermatología</h2>
-        <br>
-        <p>El consultorio de Dermatología Se enfoca en tratar afecciones de la piel, cabello y uñas, como acné, eczema, cáncer de piel y dermatitis.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dra. Laura Martinez</span>
-    </div>
-    <div class="botones ">
-        <h2>Consultorio de<br>Oftalmología</h2>
-        <br>
-        <p>El consultorio de OFtalmología Proporciona servicios de atención ocular, como exámenes de la vista, diagnóstico y tratamiento de problemas oculares y cirugías oftalmológicas.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dr. Alberto Lopez</span>
-    </div>
-    <div class="botones" >
-        <h2>Consultorio de<br>Endocrinología</h2>
-        <br>
-        <p> Este consultorio se especializa en el diagnóstico y tratamiento de trastornos hormonales y metabólicos. Los pacientes que pueden ingresar incluyen aquellos con problemas de tiroides, diabetes u otros desequilibrios hormonales.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dra. Ana Sanchez</span>
-    </div>
-    <div class="botones" >
-        <h2>Consultorio de<br>Cardiología</h2>
-        <br>
-        <p>El consultorio de Cardiología se enfoca en el diagnóstico y tratamiento de enfermedades del corazón y del sistema cardiovascular. Atiende a pacientes con afecciones cardíacas.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dr. Javier Ramirez</span>
-    </div>
-    <div class="botones" >
-        <h2>Consultorio de<br>Neurología</h2>
-        <br>
-        <p>El consultorio de  Neurología se dedica al diagnóstico y tratamiento de trastornos neurológicos, como migrañas, epilepsia, enfermedad de Alzheimer y otros problemas del sistema nervioso.</p>
-        <br>
-        <br>
-        <div>
-            <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-            <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dra. Patricia Garcia</span>
-    </div>
-    <div class="botones" >
-        <h2>Consultorio de<br>Gastroenterología</h2>
-        <br>
-        <p>Este consultorio se especializa en el diagnóstico y tratamiento de trastornos gastrointestinales, como enfermedades del estómago, el intestino y el hígado.</p>
-        <br>
-        <br>
-        <div>
-        <a class="nav-link" *ngIf="isAdmin || isMedic" routerLink="/turnospen">Ver turnos pendientes</a>
-        <a class="nav-link" routerLink="/pacientes/solicturnos">Solicitar turnos</a>
-        </div>
-        <span>Dr. Eduardo Fernandez</span>
-    </div>
+    <app-consultorio
+        class="botones"
+        *ngFor="let consultorio of consultoriosData"
+        [title]="consultorio.title"
+        [description]="consultorio.description"
+        [turnosLink]="consultorio.turnosLink"
+        [solicitarLink]="consultorio.solicitarLink"
+        [isAdmin]="isAdmin"
+        [isMedic]="isMedic"
+        [doctor]="consultorio.doctor"
+    ></app-consultorio>
 </div>

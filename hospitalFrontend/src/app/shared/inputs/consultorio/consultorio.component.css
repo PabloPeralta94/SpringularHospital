@@ -1,0 +1,39 @@
+.botones h2 {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .botones p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .botones span {
+    font-size: 0.8rem;
+    line-height: 1;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+ 
+  .botones .nav-link {
+    margin-top: auto; 
+  }
+
+  a {
+    border: black solid 1px;
+    color: white;
+  }
+
+  a:hover {
+    background-color: red; 
+  }
+  

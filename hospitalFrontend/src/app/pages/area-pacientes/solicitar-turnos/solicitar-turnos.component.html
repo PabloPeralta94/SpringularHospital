@@ -7,16 +7,16 @@
     <div class="card-body">
       <form (ngSubmit)="onSubmit()">
         <div class="form-group text">
-          <label for="turno_consultorio">Consultorio</label>
-          <input id="turno_consultorio" name="turno_consultorio" type="text" class="validate form-control" [(ngModel)]="turnoConsultorio">
+          <label for="turno_consultorio" >Consultorio {{ consultorio }}</label>
+          <input id="turno_consultorio" name="turno_consultorio" type="text" class="validate form-control" [(ngModel)]="turnoConsultorio" (input)="consultorioPreview($event)">
         </div>
         <div class="form-group text">
-          <label for="turno_body">Texto</label>
-          <textarea id="turno_body" name="turno_body" class="materialize-textarea form-control" [(ngModel)]="turnoBody"></textarea>
+          <label for="turno_body">Texto {{ body }}</label>
+          <textarea id="turno_body" name="turno_body" class="materialize-textarea form-control" [(ngModel)]="turnoBody" (input)="bodyPreview($event)"></textarea>
         </div>
         <div class="form-group text">
-          <label for="turno_paciente">Paciente</label>
-          <input id="turno_paciente" name="turno_paciente" class="materialize-textarea form-control" [(ngModel)]="turnoPaciente">
+          <label for="turno_paciente">Paciente {{ paciente }}</label>
+          <input id="turno_paciente" name="turno_paciente" class="materialize-textarea form-control" [(ngModel)]="turnoPaciente" (input)="pacientePreview($event)">
         </div>
         <div class="form-group text">
           <label for="turno_fecha">Fecha</label>

@@ -5,12 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingModule } from './landing/landing.module';
-import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { interceptorProvider } from './interceptors/emp-interceptor.service';
-import { IndexModule } from './index/index.module';
-import { PagesModule } from './pages/pages.module';
+import { IndexModule } from './main/index.module';
+import { PagesModule } from './main/inicio/pages/pages.module';
+import { AuthModule } from './seguridad/auth/auth.module';
+import { interceptorProvider } from './seguridad/interceptors/emp-interceptor.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,9 @@ import { PagesModule } from './pages/pages.module';
     SharedModule,
     FontAwesomeModule,
     IndexModule,
-    PagesModule   
+    PagesModule,
+    
+       
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

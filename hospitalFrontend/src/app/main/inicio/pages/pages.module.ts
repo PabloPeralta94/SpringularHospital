@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
 import { AreaMedicaComponent } from './area-medica/area-medica.component';
 import { AreaEnfermeriaComponent } from './area-enfermeria/area-enfermeria.component';
 import { AreaPacientesComponent } from './area-pacientes/area-pacientes.component';
@@ -22,6 +21,7 @@ import { VerTareasComponent } from './area-enfermeria/ver-tareas/ver-tareas.comp
 import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.component';
 import { VerEmpleadosComponent } from './area-administrativa/empleados/ver-empleados/ver-empleados.component';
 import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar-empleados/editar-empleados.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -34,8 +34,7 @@ import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar
     AreaPacientesComponent,
     AreaFarmaceuticaComponent,
     AreaAdministrativaComponent,
-    AreaDirectivaComponent,
-    TurnosPendientesComponent,
+    AreaDirectivaComponent,    
     SolicitarTurnosComponent,
     EmpleadosComponent,
     PacientesComponent,

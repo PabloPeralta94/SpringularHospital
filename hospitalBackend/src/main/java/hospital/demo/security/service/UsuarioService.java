@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import hospital.demo.dto.tarea.TareaResponse;
+import hospital.demo.dto.usuario.UsuarioResponse;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.repository.UsuarioRepository;
 
@@ -41,6 +43,21 @@ public class UsuarioService {
 	public List<Usuario> getAllUsuarios() {
 		
 		return usuarioRepository.findAll();
+	}
+
+	public UsuarioResponse convertToResponse(Usuario usuario) {
+		
+		UsuarioResponse usuarioResponse = new UsuarioResponse();
+		
+		usuarioResponse.setId(usuario.getId());
+		usuarioResponse.setNombre(usuario.getNombre());
+		usuarioResponse.setNombreUsuario(usuario.getNombreUsuario());
+		usuarioResponse.setEmail(usuario.getEmail());
+		usuarioResponse.setRoles(usuario.getRoles());
+		
+		return usuarioResponse;
+		
+		
 	}
 
    

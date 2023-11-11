@@ -6,6 +6,8 @@
   background-attachment: fixed;
   margin: 0;
   padding: 0;
+  font-weight: bold;
+  
 }
 
 .container {
@@ -21,12 +23,24 @@
 .logger {
   width: 70%;
   height: auto;
-  margin-top: 10%;
+  margin-top: 5%;
+  
+}
+
+.admin {
+  text-align: center;
+}
+
+.admin span {
+
+  color: black;
+  font-weight: bold;
+
 }
 
 .colores {
-  background-color: rgba(52, 152, 219, 0.5); /* Blue color with 50% transparency */
-  box-shadow: 0 0 20px rgba(52, 152, 219, 0.6); /* Shadow with the blue accent */
+  background-color: rgba(14, 49, 71, 0.541); /* Blue color with 50% transparency */
+  box-shadow: 0 0 20px rgba(34, 99, 143, 0.6); /* Shadow with the blue accent */
   color: #FFFFFF; /* Text color for better readability */
 }
 

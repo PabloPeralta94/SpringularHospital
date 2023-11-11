@@ -7,14 +7,17 @@
             <br>
             <h1 *ngIf="!nombreUsuario" class="display-8">Por favor inicia sesion o registrate para acceder a los servicios. </h1>
             <h1 *ngIf="nombreUsuario" class="display-4">Bienvenido {{nombreUsuario}}</h1>
-            <p class="lead">Ingresa para ver el contenido .</p>
+            <p class="lead"> ¡Bienvenido a mi muestra de habilidades! Aquí puedes explorar un proyecto desarrollado con Spring, Angular y SQL como servidor. Ingresa para acceder al contenido y experimentar mis capacidades en desarrollo web.</p>
             <hr class="my-4">
             <p>Este proyecto fue creado por Pablo Andres Peralta.</p>
-            <a class="btn btn-primary btn-lg" routerLink="/registro" role="button">Si no tienes una cuenta haz click
-                aqui.</a>
+            <a class="btn btn-primary btn-lg" routerLink="/registro" role="button">Aquí puedes registrar una cuenta para ver la pagina como un usuario corriente.</a>
         </div>
         <div class="logger">
             <app-login></app-login>
+            <p class="admin">si deseas utilizar una cuenta con acceso a todas las funcionalidades de la pagina.
+            <br>
+             Usuario: <span>admin</span> Contraseña: <span>admin</span>
+            </p>
         </div>
     </div>
 

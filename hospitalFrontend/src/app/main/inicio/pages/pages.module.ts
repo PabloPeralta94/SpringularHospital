@@ -46,7 +46,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     VerTareasComponent,
     CrearTareaComponent,
     VerEmpleadosComponent,
-    EditarEmpleadosComponent
+    EditarEmpleadosComponent,
+    TurnosPendientesComponent
    
   ],
   imports: [

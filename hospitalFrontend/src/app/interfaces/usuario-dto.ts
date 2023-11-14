@@ -1,5 +1,10 @@
-export class UsuarioDto {
+export interface UsuarioDto {
+  id: number;
+  nombre: string;
+  nombreUsuario: string;
+  email: string;
+  roles: {
     id: number;
-    nombre: string;
-    nombreUsuario: string;      
+    rolNombre: string;
+  }[];
 }

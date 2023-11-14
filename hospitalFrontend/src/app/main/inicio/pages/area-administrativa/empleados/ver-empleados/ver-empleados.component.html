@@ -1,17 +1,32 @@
-<div>
-    <h1>Worker Information</h1>
-    <table border="1">
-      <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Age</th>
-        <th>Salary</th>
-      </tr>
-      <tr *ngFor="let worker of workers">
-        <td>{{ worker.name }}</td>
-        <td>{{ worker.position }}</td>
-        <td>{{ worker.age }}</td>
-        <td>${{ worker.salary | number: '1.2-2' }}</td>
-      </tr>
-    </table>
+<div *ngIf="usuarios.length > 0">
+  <h1 class="mb-4">Usuarios</h1>
+  <div class="row">
+    <div *ngFor="let usuario of usuarios" class="col-md-6 mb-4">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-title">ID: {{ usuario.id }}</h5>
+              <p class="card-text"><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+              <p class="card-text"><strong>Nombre de Usuario:</strong> {{ usuario.nombreUsuario }}</p>
+              <p class="card-text"><strong>Email:</strong> {{ usuario.email }}</p>
+              <p class="card-text"><strong>Rol(es):</strong></p>
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let rol of usuario.roles" class="list-group-item">
+                  <p><strong>ID:</strong> {{ rol.id }}</p>
+                  <p><strong>Nombre del Rol:</strong> {{ rol.rolNombre }}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex align-items-end justify-content-end">
+            <img [src]="'assets/images/users/' + getImageForRole(usuario.roles[0].rolNombre)" class="img-fluid" alt="" style="max-height: 200px;">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<div *ngIf="usuarios.length === 0" class="alert alert-warning mt-4">
+  No usuarios to display.
+</div>

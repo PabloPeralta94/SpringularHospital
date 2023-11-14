@@ -70,12 +70,15 @@ public class AuthController {
 
         Set<Rol> roles = new HashSet<>();
 
-        // Iterate through roles provided in the request and add them if they exist in the possible roles
+        
         for (String role : nuevoUsuario.getRoles()) {
-            RolNombre rolNombre = RolNombre.valueOf("ROLE_" + role.toUpperCase()); // Convert to ROLE_ format
+            RolNombre rolNombre = RolNombre.valueOf("ROLE_" + role.toUpperCase()); 
             if (Arrays.stream(RolNombre.values()).anyMatch(r -> r.equals(rolNombre))) {
                 roles.add(rolService.getByRolNombre(rolNombre).get());
             }
+        }        
+        if (roles.isEmpty()) {
+            roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
         }
 
         usuario.setRoles(roles);

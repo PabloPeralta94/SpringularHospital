@@ -13,7 +13,7 @@ export class VerEmpleadosComponent implements OnInit {
   page = 0;
   size = 4;
   totalElements = 0;
-  allRoles: string[] = []; 
+  allRoles: string[] = [];
   selectedRole: string = '';
 
   constructor(private usuariosService: UsuariosService) {}
@@ -23,39 +23,47 @@ export class VerEmpleadosComponent implements OnInit {
   }
 
   loadUsuarios() {
-    this.usuariosService.getAllUsuarios(this.page, this.size).subscribe(
-      (data) => {
-        console.log('Data received:', data);
-        this.usuarios = data.content;
-        this.totalElements = data.totalElements;
-        console.log('Usuarios:', this.usuarios);
-        console.log('Total Elements:', this.totalElements);
-        this.extractRoles(); 
-        this.filteredUsuarios = [...this.usuarios];
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+    if (this.selectedRole) {
+      this.usuariosService.getUsuariosByRole(this.selectedRole, this.page, this.size).subscribe(
+        (data) => {
+          console.log('Data received:', data);
+          this.usuarios = data.content;
+          this.totalElements = data.totalElements;
+          console.log('Usuarios:', this.usuarios);
+          console.log('Roles:', this.extractRoles());
+          this.filteredUsuarios = [...this.usuarios];
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    } else {
+      this.usuariosService.getAllUsuarios(this.page, this.size).subscribe(
+        (data) => {
+          console.log('Data received:', data);
+          this.usuarios = data.content;
+          this.totalElements = data.totalElements;
+          console.log('Usuarios:', this.usuarios);
+          console.log('Roles:', this.extractRoles());
+          this.filteredUsuarios = [...this.usuarios];
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    }
   }
-
   extractRoles() {  
     const rolesSet = new Set<string>();
     this.usuarios.forEach((usuario) => {
-      usuario.roles.forEach((rol) => rolesSet.add(rol.rolNombre));
+      usuario.roles.forEach((rol) => rolesSet.add(rol.rolNombre.toLowerCase()));
     });
     this.allRoles = Array.from(rolesSet);
   }
 
   filterByRole() {
-    const selectedRole: string = this.selectedRole;
-    if (!selectedRole) {
-      this.filteredUsuarios = [...this.usuarios];
-    } else {
-      this.filteredUsuarios = this.usuarios.filter((usuario) =>
-        usuario.roles.some((rol) => rol.rolNombre === selectedRole)
-      );
-    }
+    this.page = 0;
+    this.loadUsuarios();
   }
 
   nextPage() {

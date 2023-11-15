@@ -20,4 +20,13 @@ export class UsuariosService {
     return this.http.get<Page<UsuarioDto>>(`${this.baseUrl}`, { params });
   }
 
+  getUsuariosByRole(role: string, page: number, size: number): Observable<Page<UsuarioDto>> {
+    const params = new HttpParams()
+      .set('role', role)
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http.get<Page<UsuarioDto>>(`${this.baseUrl}/by-role`, { params });
+  }
+
 }

@@ -5,6 +5,11 @@
       <option value="">Todos los cargos</option>
       <option *ngFor="let role of allRoles" [value]="role">{{ role }}</option>
     </select>
+    <div>Selected Role: {{ selectedRole }}</div>
+    <div>All Roles:</div>
+    <ul>
+      <li *ngFor="let role of allRoles">{{ role }}</li>
+    </ul>
   </div>
   <div class="row">      
     <div *ngFor="let usuario of filteredUsuarios" class="col-md-6 mb-2">

@@ -1,13 +1,17 @@
 package hospital.demo.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hospital.demo.dto.tarea.TareaResponse;
 import hospital.demo.dto.usuario.UsuarioResponse;
 import hospital.demo.security.entity.Usuario;
+import hospital.demo.security.enums.RolNombre;
 import hospital.demo.security.repository.UsuarioRepository;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +23,10 @@ public class UsuarioService {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+    
+    public Page<Usuario> getAllUsuarios(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
+    }
 
     public Optional<Usuario> getByNombreUsuario(String nombreUsuario){
         return usuarioRepository.findByNombreUsuario(nombreUsuario);
@@ -44,6 +52,11 @@ public class UsuarioService {
 		
 		return usuarioRepository.findAll();
 	}
+	
+	public Page<Usuario> getUsuariosByRole(String role, Pageable pageable) {
+        RolNombre rolNombreEnum = RolNombre.valueOf(role);
+        return usuarioRepository.findByRoles_RolNombre(rolNombreEnum, pageable);
+    }
 
 	public UsuarioResponse convertToResponse(Usuario usuario) {
 		

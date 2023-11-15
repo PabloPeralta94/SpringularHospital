@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import hospital.demo.dto.tarea.TareaResponse;
@@ -33,19 +36,33 @@ public class UsuariosController {
     }
     
     @GetMapping
-    public ResponseEntity<List<UsuarioResponse>> getAllUsuarios() {
-        List<Usuario> usuarios = usuarioService.getAllUsuarios();
-        if (usuarios.isEmpty()) {
+    public ResponseEntity<Page<UsuarioResponse>> getAllUsuarios(Pageable pageable) {
+        Page<Usuario> usuariosPage = usuarioService.getAllUsuarios(pageable);
+
+        if (usuariosPage.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        List<UsuarioResponse> usuarioResponses = new ArrayList<>();
-        
-        for (Usuario usuario : usuarios) {
-            UsuarioResponse usuarioResponse = usuarioService.convertToResponse(usuario);
-            usuarioResponses.add(usuarioResponse);
-        }
+
+        Page<UsuarioResponse> usuarioResponses = usuariosPage.map(usuarioService::convertToResponse);
+
         return new ResponseEntity<>(usuarioResponses, HttpStatus.OK);
     }
+    
+    @GetMapping("/by-role")
+    public ResponseEntity<Page<UsuarioResponse>> getUsuariosByRole(
+            @RequestParam("role") String role,
+            Pageable pageable) {
+        Page<Usuario> usuariosPage = usuarioService.getUsuariosByRole(role, pageable);
+
+        if (usuariosPage.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        Page<UsuarioResponse> usuarioResponses = usuariosPage.map(usuarioService::convertToResponse);
+
+        return new ResponseEntity<>(usuarioResponses, HttpStatus.OK);
+    }
+
 
     
     

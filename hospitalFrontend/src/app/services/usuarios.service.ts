@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsuarioDto } from '../interfaces/usuario-dto';
+import { Page } from '../interfaces/page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,12 @@ export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsuarios(): Observable<UsuarioDto[]> {
-    return this.http.get<UsuarioDto[]>(`${this.baseUrl}`);
-  }
+  getAllUsuarios(page: number, size: number): Observable<Page<UsuarioDto>> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', size.toString());
 
+    return this.http.get<Page<UsuarioDto>>(`${this.baseUrl}`, { params });
+  }
 
 }

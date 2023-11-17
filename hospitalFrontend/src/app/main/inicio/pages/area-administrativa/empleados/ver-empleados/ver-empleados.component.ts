@@ -12,8 +12,8 @@ export class VerEmpleadosComponent implements OnInit {
   filteredUsuarios: UsuarioDto[] = [];
   page = 0;
   size = 4;
-  totalElements = 0;
-  allRoles: string[] = [];
+  totalElements = 0;  
+  allRoles: string[] = ['ROLE_MEDIC', 'ROLE_NURSE', 'ROLE_PHARMA', 'ROLE_ADMIN', 'ROLE_DIRECTOR', 'ROLE_USER'];
   selectedRole: string = '';
 
   constructor(private usuariosService: UsuariosService) {}
@@ -30,7 +30,7 @@ export class VerEmpleadosComponent implements OnInit {
           this.usuarios = data.content;
           this.totalElements = data.totalElements;
           console.log('Usuarios:', this.usuarios);
-          console.log('Roles:', this.extractRoles());
+          // No need to extract roles since they are hardcoded
           this.filteredUsuarios = [...this.usuarios];
         },
         (error) => {
@@ -43,8 +43,7 @@ export class VerEmpleadosComponent implements OnInit {
           console.log('Data received:', data);
           this.usuarios = data.content;
           this.totalElements = data.totalElements;
-          console.log('Usuarios:', this.usuarios);
-          console.log('Roles:', this.extractRoles());
+          console.log('Usuarios:', this.usuarios);         
           this.filteredUsuarios = [...this.usuarios];
         },
         (error) => {
@@ -52,13 +51,6 @@ export class VerEmpleadosComponent implements OnInit {
         }
       );
     }
-  }
-  extractRoles() {  
-    const rolesSet = new Set<string>();
-    this.usuarios.forEach((usuario) => {
-      usuario.roles.forEach((rol) => rolesSet.add(rol.rolNombre.toLowerCase()));
-    });
-    this.allRoles = Array.from(rolesSet);
   }
 
   filterByRole() {

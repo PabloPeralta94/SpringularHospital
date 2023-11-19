@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./correo.component.css']
 })
 export class CorreoComponent {
+  user: string = "fernando";
+  title: string = "consulta";
+  contenido: string = "necesito algo? creo";
 
 }

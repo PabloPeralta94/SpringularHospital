@@ -10,6 +10,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class VerEmpleadosComponent implements OnInit {
   usuarios: UsuarioDto[] = [];
   filteredUsuarios: UsuarioDto[] = [];
+  mensaje: string = "";
   page = 0;
   size = 4;
   totalElements = 0;  
@@ -26,16 +27,20 @@ export class VerEmpleadosComponent implements OnInit {
     if (this.selectedRole) {
       this.usuariosService.getUsuariosByRole(this.selectedRole, this.page, this.size).subscribe(
         (data) => {
-          console.log('Data received:', data);
-          this.usuarios = data.content;
-          this.totalElements = data.totalElements;
-          console.log('Usuarios:', this.usuarios);
-          // No need to extract roles since they are hardcoded
-          this.filteredUsuarios = [...this.usuarios];
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
+          if (data && data.content) {
+            console.log('Data received:', data);
+            this.usuarios = data.content;
+            this.totalElements = data.totalElements;
+            console.log('Usuarios:', this.usuarios);
+            this.filteredUsuarios = [...this.usuarios];
+            this.mensaje= "";
+          } else {
+            console.error('Invalid data received:', data);
+            this.usuarios = [];
+            this.filteredUsuarios = [];
+            this.mensaje = "No se encontraron usuarios con ese rol.";
+          }
+        }        
       );
     } else {
       this.usuariosService.getAllUsuarios(this.page, this.size).subscribe(
@@ -43,11 +48,15 @@ export class VerEmpleadosComponent implements OnInit {
           console.log('Data received:', data);
           this.usuarios = data.content;
           this.totalElements = data.totalElements;
-          console.log('Usuarios:', this.usuarios);         
+          console.log('Usuarios:', this.usuarios);
           this.filteredUsuarios = [...this.usuarios];
+          this.mensaje= "";
         },
         (error) => {
           console.error('Error:', error);
+          this.usuarios = []; 
+          this.filteredUsuarios = [];
+          this.mensaje = "No se encontraron usuarios con ese rol."
         }
       );
     }

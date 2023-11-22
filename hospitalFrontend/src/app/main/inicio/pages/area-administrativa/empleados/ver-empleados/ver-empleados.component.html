@@ -1,18 +1,14 @@
-<div *ngIf="usuarios.length > 0">
-  <div class="col-md-6 mb-2">
-    <label for="roleSelector">Filtrar por cargo</label>
-    <select id="roleSelector" class="form-control" [(ngModel)]="selectedRole" (ngModelChange)="filterByRole()">
-      <option value="">Todos los cargos</option>
-      <option *ngFor="let role of allRoles" [value]="role">{{ role }}</option>
-    </select>
-    <div>Selected Role: {{ selectedRole }}</div>
-    <div>All Roles:</div>
-    <ul>
-      <li *ngFor="let role of allRoles">{{ role }}</li>
-    </ul>
-  </div>
-  <div class="row">      
-    <div *ngFor="let usuario of filteredUsuarios" class="col-md-6 mb-2">
+<div class="col-md-6 mb-2">
+  <label for="roleSelector">Filtrar por cargo</label>
+  <select id="roleSelector" class="form-control" [(ngModel)]="selectedRole" (ngModelChange)="filterByRole()">
+    <option value="">Todos los cargos</option>
+    <option *ngFor="let role of allRoles" [value]="role">{{ role }}</option>
+  </select>
+  <div>Selected Role: {{ selectedRole }}</div>
+</div>
+
+<div class="row" *ngIf="usuarios.length > 0">
+  <div *ngFor="let usuario of filteredUsuarios" class="col-md-6 mb-2">
         <div class="card bg-primary">
           <div class="row no-gutters">
             <div class="col-md-6">
@@ -34,8 +30,17 @@
         </div>
       </div>
     </div>
+  
+  <div *ngIf="usuarios.length === 0 && !mensaje" class="alert alert-warning mt-4">
+    No usuarios to display.
   </div>
-
+  
+  <div *ngIf="mensaje" class="alert alert-warning mt-4">
+    {{ mensaje }}
+  </div>
+  <div class="mt-2" *ngIf="totalPages > 0">
+    Page {{ page + 1 }} of {{ totalPages }}
+  </div>
   <nav *ngIf="totalPages > 1">
     <ul class="pagination">
       <li class="page-item" [class.disabled]="page === 0">
@@ -46,9 +51,5 @@
       </li>
     </ul>
   </nav>
-  <div class="mt-2">
-    Page {{ page + 1 }} of {{ totalPages }}
-  </div>
-<div *ngIf="usuarios.length === 0" class="alert alert-warning mt-4">
-  No usuarios to display.
-</div>
+  
+  

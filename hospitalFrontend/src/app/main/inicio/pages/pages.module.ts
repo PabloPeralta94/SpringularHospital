@@ -11,7 +11,6 @@ import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turno
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SolicitarTurnosComponent } from './area-pacientes/solicitar-turnos/solicitar-turnos.component';
 import { EmpleadosComponent } from './area-administrativa/empleados/empleados.component';
-import { PacientesComponent } from './area-administrativa/pacientes/pacientes.component';
 import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
 import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
@@ -38,8 +37,7 @@ import { QuejasComponent } from './area-directiva/quejas/quejas.component';
     AreaAdministrativaComponent,
     AreaDirectivaComponent,    
     SolicitarTurnosComponent,
-    EmpleadosComponent,
-    PacientesComponent,
+    EmpleadosComponent, 
     VentasComponent,
     RecetasComponent,
     CrearRecetaComponent,

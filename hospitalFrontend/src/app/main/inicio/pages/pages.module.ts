@@ -6,13 +6,10 @@ import { AreaEnfermeriaComponent } from './area-enfermeria/area-enfermeria.compo
 import { AreaPacientesComponent } from './area-pacientes/area-pacientes.component';
 import { AreaFarmaceuticaComponent } from './area-farmaceutica/area-farmaceutica.component';
 import { AreaAdministrativaComponent } from './area-administrativa/area-administrativa.component';
-import { AreaDirectivaComponent } from './area-directiva/area-directiva.component';
 import { TurnosPendientesComponent } from './area-medica/turnos-pendientes/turnos-pendientes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SolicitarTurnosComponent } from './area-pacientes/solicitar-turnos/solicitar-turnos.component';
 import { EmpleadosComponent } from './area-administrativa/empleados/empleados.component';
-import { VentasComponent } from './area-farmaceutica/ventas/ventas.component';
-import { RecetasComponent } from './area-farmaceutica/recetas/recetas.component';
 import { CrearRecetaComponent } from './area-medica/crear-receta/crear-receta.component';
 import { ComprarComponent } from './area-farmaceutica/comprar/comprar.component';
 import { MostrarTurnosPacienteComponent } from './area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
@@ -21,8 +18,7 @@ import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.c
 import { VerEmpleadosComponent } from './area-administrativa/empleados/ver-empleados/ver-empleados.component';
 import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar-empleados/editar-empleados.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CorreoComponent } from './area-directiva/correo/correo.component';
-import { QuejasComponent } from './area-directiva/quejas/quejas.component';
+
 
 
 
@@ -34,12 +30,9 @@ import { QuejasComponent } from './area-directiva/quejas/quejas.component';
     AreaEnfermeriaComponent,
     AreaPacientesComponent,
     AreaFarmaceuticaComponent,
-    AreaAdministrativaComponent,
-    AreaDirectivaComponent,    
+    AreaAdministrativaComponent,      
     SolicitarTurnosComponent,
-    EmpleadosComponent, 
-    VentasComponent,
-    RecetasComponent,
+    EmpleadosComponent,    
     CrearRecetaComponent,
     ComprarComponent,
     MostrarTurnosPacienteComponent,
@@ -47,9 +40,7 @@ import { QuejasComponent } from './area-directiva/quejas/quejas.component';
     CrearTareaComponent,
     VerEmpleadosComponent,
     EditarEmpleadosComponent,
-    TurnosPendientesComponent,
-    CorreoComponent,
-    QuejasComponent
+    TurnosPendientesComponent    
    
   ],
   imports: [

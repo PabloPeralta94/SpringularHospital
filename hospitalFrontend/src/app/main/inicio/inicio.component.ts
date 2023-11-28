@@ -8,33 +8,28 @@ import { Component } from '@angular/core';
 export class InicioComponent {
   buttonData = [
     {
-      title: 'Area Medica',
-      description: 'Aqui pueden ingresar los medicos',
+      title: 'Consultorios',
+      description: 'Ingresa aqui para ver los consultorios o solicitar un turno',
       link: '/medica',
     },
     {
-      title: 'Area Enfermeria',
-      description: 'Aqui pueden ingresar los enfermeros',
+      title: 'Enfermeria',
+      description: 'Ingresa aqui para ver las tareas pendientes de las enfermeras o ingresar una nueva tarea.',
       link: '/enfermeria',
     },
     {
-      title: 'Area Pacientes',
+      title: 'Mis Datos',
       description: 'Aqui pueden ingresar pacientes',
       link: '/pacientes',
     },
     {
-      title: 'Area Farmacia',
-      description: 'Aqui pueden ingresar farmaceuticos',
+      title: 'Farmacia',
+      description: 'Ingresa aqui para comprar los medicamentos que necesitas.',
       link: '/farmacia',
-    },
+    },   
     {
-      title: 'Area Directiva',
-      description: 'Aqui pueden ingresar directivos',
-      link: '/direccion',
-    },
-    {
-      title: 'Area Administrativa',
-      description: 'Aqui pueden ingresar administrativos',
+      title: 'Administrar empleados',
+      description: 'Si estas viendo esto y no has iniciado como administrador, por favor informa del problema de inmediato.',
       link: '/administracion',
     },
     // Agregar mas botones de ser necesario.

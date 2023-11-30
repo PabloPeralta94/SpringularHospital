@@ -5,13 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from './login/login.component';
+import { RegistroPopupComponent } from './registro-popup/registro-popup.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    RegistroPopupComponent
   ],
   imports: [
     CommonModule,

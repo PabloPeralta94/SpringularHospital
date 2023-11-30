@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Tarea } from '../interfaces/tarea';
 import { Observable } from 'rxjs';
+import { Tarea } from '../shared/interfaces/tarea';
 
 @Injectable({
   providedIn: 'root'

@@ -10,7 +10,7 @@
             <p class="lead"> ¡Bienvenido a mi muestra de habilidades! Aquí puedes explorar un proyecto desarrollado con Spring, Angular y SQL como servidor. Ingresa para acceder al contenido y experimentar mis capacidades en desarrollo web.</p>
             <hr class="my-4">
             <p>Este proyecto fue creado por Pablo Andres Peralta.</p>
-            <a class="btn btn-primary btn-lg" routerLink="/registro" role="button">Aquí puedes registrar una cuenta para ver la pagina como un usuario corriente.</a>
+            <button class="btn btn-primary btn-success btn-lg" (click)="openModal()" role="button">Aquí puedes registrar una cuenta para ver la pagina como un usuario corriente.</button>
         </div>
         <div class="logger">
             <app-login></app-login>

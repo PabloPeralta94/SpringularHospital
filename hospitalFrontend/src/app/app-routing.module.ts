@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './landing/main.component';
 import { InicioComponent } from './main/inicio/inicio.component';
 import { AreaAdministrativaComponent } from './main/inicio/pages/area-administrativa/area-administrativa.component';
 import { AreaEnfermeriaComponent } from './main/inicio/pages/area-enfermeria/area-enfermeria.component';
@@ -14,10 +13,11 @@ import { MostrarTurnosPacienteComponent } from './main/inicio/pages/area-pacient
 import { SolicitarTurnosComponent } from './main/inicio/pages/area-pacientes/solicitar-turnos/solicitar-turnos.component';
 import { LoginComponent } from './seguridad/auth/login/login.component';
 import { RegistroComponent } from './seguridad/auth/registro/registro.component';
+import { LandingComponent } from './main/landing/landing.component';
 
 
 const routes: Routes = [
-  {path: '', component: MainComponent }, 
+  {path: '', component: LandingComponent }, 
   {path: 'login', component: LoginComponent },
   {path: 'registro', component: RegistroComponent },
   {path: 'index', component: InicioComponent/*,  canActivate: [LoginGuard]*/},

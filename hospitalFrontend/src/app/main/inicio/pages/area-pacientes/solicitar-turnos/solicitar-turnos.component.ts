@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TurnosService } from 'src/app/services/turnos.service';
-import { Turno } from 'src/app/interfaces/turno';
 
 @Component({
   selector: 'app-solicitar-turnos',

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Turno } from '../interfaces/turno';
+import { Turno } from '../shared/interfaces/turno';
 
 
 @Injectable({

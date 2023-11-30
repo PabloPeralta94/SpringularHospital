@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Turno } from 'src/app/interfaces/turno';
 import { TokenService } from 'src/app/services/token.service';
 import { TurnosService } from 'src/app/services/turnos.service';
+import { Turno } from 'src/app/shared/interfaces/turno';
 
 @Component({
   selector: 'app-mostrar-turnos-paciente',

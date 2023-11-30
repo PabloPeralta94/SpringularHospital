@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RecetasService } from 'src/app/services/recetas.service';
-import { Receta } from 'src/app/interfaces/receta';
+import { Receta } from 'src/app/shared/interfaces/receta';
 
 @Component({
   selector: 'app-crear-receta',

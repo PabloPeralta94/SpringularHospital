@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NuevoUsuario } from 'src/app/interfaces/nuevo-usuario';
+
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
+import { NuevoUsuario } from 'src/app/shared/interfaces/nuevo-usuario';
 
 @Component({
   selector: 'app-registro',

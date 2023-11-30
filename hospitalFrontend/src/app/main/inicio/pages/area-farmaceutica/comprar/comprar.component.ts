@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Medicamento } from 'src/app/interfaces/medicamento';
 import { MedicamentosService } from 'src/app/services/medicamentos.service';
 import { TokenService } from 'src/app/services/token.service';
+import { Medicamento } from 'src/app/shared/interfaces/medicamento';
 
 @Component({
   selector: 'app-comprar',

@@ -3,8 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TokenService } from 'src/app/services/token.service';
 
-import { Turno } from 'src/app/interfaces/turno';
 import { TurnosService } from 'src/app/services/turnos.service';
+import { Turno } from 'src/app/shared/interfaces/turno';
 
 
 

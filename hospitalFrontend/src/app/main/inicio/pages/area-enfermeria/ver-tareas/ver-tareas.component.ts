@@ -1,9 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Tarea } from 'src/app/interfaces/tarea';
 import { TareasService } from 'src/app/services/tareas.service';
 import { TokenService } from 'src/app/services/token.service';
+import { Tarea } from 'src/app/shared/interfaces/tarea';
 
 @Component({
   selector: 'app-ver-tareas',

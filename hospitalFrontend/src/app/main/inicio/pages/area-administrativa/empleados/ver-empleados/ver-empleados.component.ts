@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioDto } from 'src/app/interfaces/usuario-dto';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { UsuarioDto } from 'src/app/shared/interfaces/usuario-dto';
 
 @Component({
   selector: 'app-ver-empleados',

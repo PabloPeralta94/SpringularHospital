@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UsuarioDto } from '../interfaces/usuario-dto';
-import { Page } from '../interfaces/page';
+import { Page } from '../shared/interfaces/page';
+import { UsuarioDto } from '../shared/interfaces/usuario-dto';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../services/token.service';
+import { TokenService } from '../../services/token.service';
 import { faHospital } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  templateUrl: './landing.component.html',
+  styleUrls: ['./landing.component.css']
 })
-export class MainComponent implements OnInit {
+export class LandingComponent implements OnInit {
   hospitalIcon = faHospital;
 
   nombreUsuario: string;
@@ -23,6 +23,11 @@ export class MainComponent implements OnInit {
     this.redirect();
 
     
+  }
+
+  openModal() {
+    
+   
   }
 
   redirect(): boolean {

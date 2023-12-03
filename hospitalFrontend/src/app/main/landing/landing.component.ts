@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from '../../services/token.service';
 import { faHospital } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { RegistroComponent } from 'src/app/seguridad/auth/registro/registro.component';
+
 
 @Component({
   selector: 'app-main',
@@ -15,7 +18,8 @@ export class LandingComponent implements OnInit {
   isLogged: boolean = false;
 
   constructor(private tokenService: TokenService,
-    private router: Router) { }
+    private router: Router,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.nombreUsuario = this.tokenService.getUserName();
@@ -25,8 +29,16 @@ export class LandingComponent implements OnInit {
     
   }
 
-  openModal() {
-    
+  openModal() { 
+    const dialogRef = this.dialog.open(RegistroComponent, {
+      width: '600px', // adjust the width as needed
+      // you can add more configuration options here
+    });
+  
+    // You can subscribe to the afterClosed() method to perform actions when the modal is closed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
    
   }
 

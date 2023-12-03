@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { AuthModule } from '../../seguridad/auth/auth.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -17,7 +18,8 @@ import { AuthModule } from '../../seguridad/auth/auth.module';
     SharedModule,
     FontAwesomeModule,
     AuthModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ]
 })
 export class LandingModule { }

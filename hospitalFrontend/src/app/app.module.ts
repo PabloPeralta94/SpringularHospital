@@ -11,6 +11,7 @@ import { IndexModule } from './main/index.module';
 import { PagesModule } from './main/inicio/pages/pages.module';
 import { AuthModule } from './seguridad/auth/auth.module';
 import { interceptorProvider } from './seguridad/interceptors/emp-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { interceptorProvider } from './seguridad/interceptors/emp-interceptor.se
     SharedModule,
     FontAwesomeModule,
     IndexModule,
-    PagesModule,       
+    PagesModule,
+    BrowserAnimationsModule,       
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

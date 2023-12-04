@@ -5,21 +5,27 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoginComponent } from './login/login.component';
-import { RegistroPopupComponent } from './registro-popup/registro-popup.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegistroComponent,
-    RegistroPopupComponent
+    RegistroComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    MatInputModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatCardModule
   ],
   exports: [
     RegistroComponent,

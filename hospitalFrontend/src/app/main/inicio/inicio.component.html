@@ -1,12 +1,12 @@
 <div class="body">
-<app-menu></app-menu>
-<div class="container-main">
-  <a *ngFor="let item of buttonData" class="btn btn-primary" [routerLink]="item.link">
-    <h2>{{ item.title }}</h2>
-    <br>
-    <p>{{ item.description }}</p>
-    <br>
-    <span>Click para ingresar a la sección</span>
-  </a>
-</div>
+  <app-menu></app-menu>
+  <div class="container-main">
+    <a *ngFor="let item of buttonData" class="mat-raised-button mat-primary" [routerLink]="item.link">
+      <div>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.description }}</p>
+        <span>Click para ingresar a la sección</span>
+      </div>
+    </a>
+  </div>
 </div>

@@ -4,6 +4,8 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -15,7 +17,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     RouterModule,
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatButtonModule
   ]
 })
 export class IndexModule { }

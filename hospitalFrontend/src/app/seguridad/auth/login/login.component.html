@@ -1,25 +1,29 @@
-<div class="container d-flex justify-content-center water-background">
-    <div class="card bg-primary width">
-        <div class="card-header text ">
-            <h2>Iniciar sesión con  <img src="assets/images/jwt.png" alt="" width="100px" height="30px"> .</h2>
+<div class="container mat-align-center water-background">
+    <div class="mat-card width">
+      <div class="mat-card-header">
+        <div class="mat-card-title">
+          Iniciar sesión con
+          <img src="assets/images/jwt.png" alt="" width="100px" height="30px">
+          .
         </div>
-        <div class="card-body  ">
-            <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
-                <div class="form-group text ">
-                    <label for="nombreUsuario">Nombre de Usuario</label>
-                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control"
-                        [(ngModel)]="nombreUsuario" required>
-                </div>
-                <div class="form-group text ">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password"
-                        required>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-outline-success btn-block text " [disabled]="!f.valid" type="submit">
-                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
-                </div>
-            </form>
-        </div>
+      </div>
+      <div class="mat-card-content">
+        <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+          <div class="mat-form-field">
+            <label for="nombreUsuario">Nombre de Usuario</label>
+            <input matInput type="text" name="nombreUsuario" id="nombreUsuario" [(ngModel)]="nombreUsuario" required>
+          </div>
+          <div class="mat-form-field">
+            <label for="password">Contraseña</label>
+            <input matInput type="password" name="password" id="password" [(ngModel)]="password" required>
+          </div>
+          <div class="mat-form-field">
+            <button mat-raised-button color="primary" [disabled]="!f.valid" type="submit">
+              <i class="material-icons">login</i> Iniciar Sesión
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div>
+  </div>
+  

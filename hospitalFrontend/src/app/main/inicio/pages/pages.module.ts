@@ -18,6 +18,10 @@ import { CrearTareaComponent } from './area-enfermeria/crear-tarea/crear-tarea.c
 import { VerEmpleadosComponent } from './area-administrativa/empleados/ver-empleados/ver-empleados.component';
 import { EditarEmpleadosComponent } from './area-administrativa/empleados/editar-empleados/editar-empleados.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -40,7 +44,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CrearTareaComponent,
     VerEmpleadosComponent,
     EditarEmpleadosComponent,
-    TurnosPendientesComponent    
+    TurnosPendientesComponent,
+        
    
   ],
   imports: [
@@ -49,6 +54,10 @@ import { SharedModule } from 'src/app/shared/shared.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCardModule,
+    MatPaginatorModule,
        
 
   ]

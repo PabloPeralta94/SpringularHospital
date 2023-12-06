@@ -30,12 +30,9 @@ export class LandingComponent implements OnInit {
   }
 
   openModal() { 
-    const dialogRef = this.dialog.open(RegistroComponent, {
-      width: '600px', // adjust the width as needed
-      // you can add more configuration options here
-    });
-  
-    // You can subscribe to the afterClosed() method to perform actions when the modal is closed
+    const dialogRef = this.dialog.open(RegistroComponent, {      
+    });  
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

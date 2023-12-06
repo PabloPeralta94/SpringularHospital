@@ -1,24 +1,28 @@
 <div class="container mat-align-center">
   <div class="mat-card">
     <div class="mat-card-header">
-      <div class="mat-card-title">Ingresa tus datos.</div>
+      <div class="mat-card-title"><h2>Ingresa tus datos.</h2></div>
     </div>
     <div class="mat-card-content">
       <form #f="ngForm" (ngSubmit)="onRegister()" novalidate>
         <div class="mat-form-field">
           <label for="nombre">Nombre</label>
+          <br>
           <input matInput type="text" name="nombre" id="nombre" [(ngModel)]="nombre" required>
         </div>
         <div class="mat-form-field">
           <label for="nombreUsuario">Nombre de Usuario</label>
+          <br>          
           <input matInput type="text" name="nombreUsuario" id="nombreUsuario" [(ngModel)]="nombreUsuario" required>
         </div>
         <div class="mat-form-field">
           <label for="password">Contraseña</label>
+          <br>
           <input matInput type="password" name="password" id="password" [(ngModel)]="password" required>
         </div>
         <div class="mat-form-field">
           <label for="email">Correo Electrónico</label>
+          <br>
           <input matInput type="text" name="email" id="email" [(ngModel)]="email" required>
         </div>
         <div class="mat-form-field">

@@ -38,9 +38,10 @@
 <div *ngIf="mensaje" class="mat-alert mat-warning mt-4">
   {{ mensaje }}
 </div>
-<div class="mt-2" *ngIf="totalPages > 0">
+<div *ngIf="totalPages > 0">
   Page {{ page + 1 }} of {{ totalPages }}
 </div>
 <nav *ngIf="totalPages > 1">
-  <mat-paginator [pageSize]="pageSize" [length]="totalPages" (page)="onPageChange($event)"></mat-paginator>
+  <mat-paginator [pageSize]="size" [length]="totalElements" (page)="onPageChange($event)"></mat-paginator>
 </nav>
+

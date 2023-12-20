@@ -8,14 +8,14 @@ import { LandingModule } from './main/landing/landing.module';
 import { SharedModule } from './shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IndexModule } from './main/index.module';
-import { PagesModule } from './main/inicio/pages/pages.module';
-import { AuthModule } from './seguridad/auth/auth.module';
-import { interceptorProvider } from './seguridad/interceptors/emp-interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { PagesModule } from './main/index/pages/pages.module';
+import { AuthModule } from './security/auth/auth.module';
+import { interceptorProvider } from './security/interceptors/emp-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],

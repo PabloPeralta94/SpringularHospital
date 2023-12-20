@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InicioComponent } from './main/inicio/inicio.component';
-import { AreaAdministrativaComponent } from './main/inicio/pages/area-administrativa/area-administrativa.component';
-import { AreaEnfermeriaComponent } from './main/inicio/pages/area-enfermeria/area-enfermeria.component';
-import { AreaFarmaceuticaComponent } from './main/inicio/pages/area-farmaceutica/area-farmaceutica.component';
-import { ComprarComponent } from './main/inicio/pages/area-farmaceutica/comprar/comprar.component';
-import { AreaMedicaComponent } from './main/inicio/pages/area-medica/area-medica.component';
-import { CrearRecetaComponent } from './main/inicio/pages/area-medica/crear-receta/crear-receta.component';
-import { TurnosPendientesComponent } from './main/inicio/pages/area-medica/turnos-pendientes/turnos-pendientes.component';
-import { AreaPacientesComponent } from './main/inicio/pages/area-pacientes/area-pacientes.component';
-import { MostrarTurnosPacienteComponent } from './main/inicio/pages/area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
-import { SolicitarTurnosComponent } from './main/inicio/pages/area-pacientes/solicitar-turnos/solicitar-turnos.component';
-import { LoginComponent } from './seguridad/auth/login/login.component';
-import { RegistroComponent } from './seguridad/auth/registro/registro.component';
 import { LandingComponent } from './main/landing/landing.component';
+import { InicioComponent } from './main/index/inicio.component';
+import { AreaAdministrativaComponent } from './main/index/pages/area-administrativa/area-administrativa.component';
+import { AreaEnfermeriaComponent } from './main/index/pages/area-enfermeria/area-enfermeria.component';
+import { AreaFarmaceuticaComponent } from './main/index/pages/area-farmaceutica/area-farmaceutica.component';
+import { ComprarComponent } from './main/index/pages/area-farmaceutica/comprar/comprar.component';
+import { AreaMedicaComponent } from './main/index/pages/area-medica/area-medica.component';
+import { CrearRecetaComponent } from './main/index/pages/area-medica/crear-receta/crear-receta.component';
+import { TurnosPendientesComponent } from './main/index/pages/area-medica/turnos-pendientes/turnos-pendientes.component';
+import { AreaPacientesComponent } from './main/index/pages/area-pacientes/area-pacientes.component';
+import { MostrarTurnosPacienteComponent } from './main/index/pages/area-pacientes/mostrar-turnos-paciente/mostrar-turnos-paciente.component';
+import { SolicitarTurnosComponent } from './main/index/pages/area-pacientes/solicitar-turnos/solicitar-turnos.component';
+import { LoginComponent } from './security/auth/login/login.component';
+import { RegistroComponent } from './security/auth/registro/registro.component';
 
 
 const routes: Routes = [

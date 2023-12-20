@@ -13,21 +13,20 @@ export class UsuariosService {
 
   constructor(private http: HttpClient) { }
 
-  getAllUsuarios(page: number, size: number): Observable<Page<UsuarioDto>> {
+  getAllUsuarios(pageable: any): Observable<Page<UsuarioDto>> {
     const params = new HttpParams()
-      .set('page', page.toString())
-      .set('size', size.toString());
+      .set('page', pageable.page.toString())
+      .set('size', pageable.size.toString());
 
     return this.http.get<Page<UsuarioDto>>(`${this.baseUrl}`, { params });
   }
 
-  getUsuariosByRole(role: string, page: number, size: number): Observable<Page<UsuarioDto>> {
+  getUsuariosByRole(role: string, pageable: any): Observable<Page<UsuarioDto>> {
     const params = new HttpParams()
       .set('role', role)
-      .set('page', page.toString())
-      .set('size', size.toString());
+      .set('page', pageable.page.toString())
+      .set('size', pageable.size.toString());
 
     return this.http.get<Page<UsuarioDto>>(`${this.baseUrl}/by-role`, { params });
   }
-
 }

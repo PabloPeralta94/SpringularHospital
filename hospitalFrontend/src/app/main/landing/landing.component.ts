@@ -3,7 +3,7 @@ import { TokenService } from '../../services/token.service';
 import { faHospital } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { RegistroComponent } from 'src/app/seguridad/auth/registro/registro.component';
+import { RegistroComponent } from 'src/app/security/auth/registro/registro.component';
 
 
 @Component({

@@ -4,8 +4,8 @@ import { LandingComponent } from './landing.component';
 import { SharedModule } from '../../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
-import { AuthModule } from '../../seguridad/auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AuthModule } from 'src/app/security/auth/auth.module';
 
 
 

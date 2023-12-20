@@ -1,0 +1,43 @@
+<form [formGroup]="tareaForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput id="nombre" formControlName="nombre" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Inicio</mat-label>
+    <input matInput type="date" id="fechaInicio" formControlName="fechaInicio" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Fin</mat-label>
+    <input matInput type="date" id="fechaFin" formControlName="fechaFin" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enfermera Asignada</mat-label>
+    <input matInput id="enfermeraAsignada" formControlName="enfermeraAsignada" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Prioridad</mat-label>
+    <input matInput id="prioridad" formControlName="prioridad" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Paciente Asociado</mat-label>
+    <input matInput id="pacienteAsociado" formControlName="pacienteAsociado" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Ubicacion</mat-label>
+    <input matInput id="ubicacion" formControlName="ubicacion" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Notas</mat-label>
+    <textarea matInput id="notas" formControlName="notas"></textarea>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!tareaForm.valid">Crear Tarea</button>
+</form>

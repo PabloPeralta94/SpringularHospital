@@ -1,3 +1,29 @@
-* {
-  color: aliceblue;
+
+mat-form-field {
+  width: 100%; 
+  margin: 0;  
+  padding: 0;  
+  margin-bottom: -16px;
+  
 }
+
+mat-form-field mat-label input {
+  display: flex;
+  border: 5px solid black;
+  padding: 0px;
+}
+
+.mat-form-field {
+  margin: 0;
+  padding: 0;
+}
+
+.mat-form-field-underline {
+  margin-bottom: 0;
+}
+
+.mat-input-element {
+  margin: 0;
+  padding: 0;
+}
+

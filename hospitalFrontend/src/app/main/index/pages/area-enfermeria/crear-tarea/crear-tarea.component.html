@@ -1,4 +1,5 @@
-<form [formGroup]="tareaForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="tareaForm" (ngSubmit)="onSubmit()" class="formulario">
+  <div class="formulario">
   <mat-form-field>
     <mat-label>Nombre</mat-label>
     <input matInput id="nombre" formControlName="nombre" required />
@@ -40,4 +41,6 @@
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit" [disabled]="!tareaForm.valid">Crear Tarea</button>
+
+</div>
 </form>

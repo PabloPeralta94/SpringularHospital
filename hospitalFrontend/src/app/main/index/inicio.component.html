@@ -1,10 +1,10 @@
 <div class="body">
   <app-menu></app-menu>
   <div class="container-main">
-    <a *ngFor="let item of buttonData" class="mat-raised-button mat-primary" [routerLink]="item.link">
-      <div>
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
+    <a *ngFor="let item of buttonData" class="mat-raised-button mat-primary btn" [routerLink]="item.link">
+      <div class="container-card">
+        <h2>{{ item.title }}</h2>        
+        <p>{{ item.description }}</p>        
         <span>Click para ingresar a la sección</span>
       </div>
     </a>

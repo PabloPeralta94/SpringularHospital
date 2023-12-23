@@ -1,27 +1,14 @@
-html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  body {
-    position: relative;
-    height: 100vh;
-  }
-  
-  .app-menu {
-    /* Assuming 'app-menu' is the class or selector for your menu bar */
-    z-index: 2;
-  }
-  
-  .form-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    width: 500px;
-    align-items: center;
-    justify-content: center;
-    z-index: 1; /* Set a lower z-index to position it below the menu bar */
-  }
+
+.form-container {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+
+}
+
+app-crear-tarea {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}

@@ -1,3 +1,8 @@
-.text {
-    color: aliceblue;
+.mat-card-header {
+    margin-left: 15px;
+}
+.col-flex {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
 }

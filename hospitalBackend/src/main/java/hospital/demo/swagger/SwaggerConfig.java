@@ -47,7 +47,7 @@ public class SwaggerConfig implements WebMvcConfigurer {
     private ApiInfo apiInfo(){
         return new ApiInfo(
                 "Hospital Springular",
-                "Esta es mi primera documentacion en swagger.",
+                "Esta es mi primera documentacion en swagger \n Sigue los siguientes pasos para habilitar el testeo de todos los controladores \n paso 1: Selecciona el controlador auth controller en la opcion de login a continuacion selecciona el boton try it out edita el contenido del nombre de usuario y la contraseña(remplazando la palabra String por la palabra admin en ambos casos) y luego presiona el boton Execute \n paso 2: Obtendras un response body con la palabra token seguido de un codigo entre comillas, copia ese codigo(sin las comillas) \n paso 3: Una vez copiado el codigo podras observar un boton encima de todos los controladores con la palabra Authorize, seleccionalo e ingresa la palabra bearer seguida del token copiado EJEMPLO: bearer eyJhbGciOiJIUzUxMiJ9.eyJzdW.....etc...etc \n Listo ya puedes utilzar el resto de controladores sin problema.",
                 "1.0",
                 "Términos y Condiciones",
                 new Contact("Pablo Andres Peralta", "www.hospitalspringular.com.ar", "pablo.peralta94@gmail.com"),

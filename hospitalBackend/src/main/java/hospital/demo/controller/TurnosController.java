@@ -31,6 +31,7 @@ import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.TurnoService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -47,6 +48,7 @@ public class TurnosController {
         this.jwtProvider = jwtProvider;
     }
     
+    @ApiOperation("Muestra una lista de turnos")
     @GetMapping
     public ResponseEntity<List<Turno>> getAllTurnos(HttpServletRequest request) {
         System.out.println("/getAllTurnos: " + request);
@@ -55,6 +57,7 @@ public class TurnosController {
         return new ResponseEntity<>(turnos, HttpStatus.OK);
     }
     
+    @ApiOperation("Muestra los turnos de un usuario individual")
     @GetMapping("/byUser")
     public ResponseEntity<List<Turno>> getTurnoByUser(Authentication authentication) {
         String username = authentication.getName();
@@ -69,6 +72,7 @@ public class TurnosController {
         }
     }
     
+    @ApiOperation("Muestra los turnos por Id")
     @GetMapping("/{turnoId}")
     public ResponseEntity<Turno> getTurnosById(@PathVariable int turnoId) {
         Optional<Turno> turno = turnoService.getTurnosById(turnoId);
@@ -76,6 +80,8 @@ public class TurnosController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
     
+    
+    @ApiOperation("Crea un turno para un usuario")
     @PostMapping("/byUser")
     public ResponseEntity<TurnoResponse> createTurnoForUsuario(@Valid @RequestBody TurnoRequest turno,
                                                               Authentication authentication) {
@@ -93,7 +99,8 @@ public class TurnosController {
 
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
-   
+    
+    @ApiOperation("Edita el turno de un usuario")   
     @PutMapping("/{turnoId}")
     public ResponseEntity<Turno> updateTurno(@PathVariable int turnoId, @Valid @RequestBody Turno turno) {
         Optional<Turno> existingTurno = turnoService.getTurnosById(turnoId);
@@ -106,6 +113,8 @@ public class TurnosController {
         return new ResponseEntity<>(updatedTurno, HttpStatus.OK);
     }
     
+    
+    @ApiOperation("Elimina el turno de un usuario")
     @DeleteMapping("/{turnoId}")
     public ResponseEntity<String> deleteTurno(@PathVariable int turnoId) {
         Optional<Turno> turno = turnoService.getTurnosById(turnoId);
@@ -117,6 +126,8 @@ public class TurnosController {
         return new ResponseEntity<>("Turno deleted successfully", HttpStatus.NO_CONTENT);
     }
     
+    
+    @ApiOperation("Muestra una lista de turnos paginados")
     @GetMapping("/paginated")
     public ResponseEntity<Page<Turno>> getPaginatedTurnos(Pageable pageable) {
         Page<Turno> turnos = turnoService.getPaginatedTurnos(pageable);

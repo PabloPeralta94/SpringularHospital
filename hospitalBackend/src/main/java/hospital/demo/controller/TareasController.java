@@ -32,6 +32,7 @@ import hospital.demo.model.Tarea;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.TareaService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -49,6 +50,8 @@ public class TareasController {
         this.usuarioService = usuarioService;
     }    
 
+    
+    
     @GetMapping
     public ResponseEntity<List<TareaResponse>> getAllTareas() {
         List<Tarea> tareas = tareaService.getAllTareas();

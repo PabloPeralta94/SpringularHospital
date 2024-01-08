@@ -27,7 +27,6 @@ import hospital.demo.dto.receta.RecetaResponse;
 import hospital.demo.dto.tarea.TareaRequest;
 import hospital.demo.dto.tarea.TareaResponse;
 import hospital.demo.model.Medicamento;
-import hospital.demo.model.Receta;
 import hospital.demo.model.Tarea;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.service.UsuarioService;
@@ -65,6 +64,8 @@ public class TareasController {
         return new ResponseEntity<>(tareaResponses, HttpStatus.OK);
     }
     
+    
+    @ApiOperation("Crea una tarea desde el usuario logueado")
     @PostMapping("/byUser")
     public ResponseEntity<TareaResponse> createTareaForUsuario(@Valid @RequestBody TareaRequest tarea,
                                                                Authentication authentication) {
@@ -85,6 +86,7 @@ public class TareasController {
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
     
+    @ApiOperation("Edita una tarea desde su ID")
     @PutMapping("/{tareaId}")
     public ResponseEntity<TareaResponse> updateTarea(
             @PathVariable Integer tareaId,
@@ -102,6 +104,8 @@ public class TareasController {
         return new ResponseEntity<>(respuesta, HttpStatus.OK);
     }
     
+    
+    @ApiOperation("Elimina una tarea desde su ID")
     @DeleteMapping("/{tareaId}")
     public ResponseEntity<Void> deleteReceta(@PathVariable Integer tareaId) {
         Optional<Tarea> existingTarea = tareaService.getTareaById(tareaId);

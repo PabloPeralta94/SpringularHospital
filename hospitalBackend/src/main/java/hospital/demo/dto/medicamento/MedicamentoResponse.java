@@ -9,7 +9,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import hospital.demo.model.Receta;
 
 public class MedicamentoResponse {
 	
@@ -21,23 +20,21 @@ public class MedicamentoResponse {
 
     protected String precio;
 
-    protected boolean esVentaLibre;
-    
-    protected int recetaId;
+    protected boolean esVentaLibre;    
+   
 
 	public MedicamentoResponse() {
 		super();
 	}
 
 	public MedicamentoResponse(int medicamentoId, String nombre, String descripcion, String precio,
-			boolean esVentaLibre, int recetaId) {
+			boolean esVentaLibre) {
 		super();
 		this.medicamentoId = medicamentoId;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		this.esVentaLibre = esVentaLibre;
-		this.recetaId = recetaId;
+		this.esVentaLibre = esVentaLibre;		
 	}
 
 	public int getMedicamentoId() {
@@ -79,13 +76,6 @@ public class MedicamentoResponse {
 	public void setEsVentaLibre(boolean esVentaLibre) {
 		this.esVentaLibre = esVentaLibre;
 	}
-
-	public int getRecetaId() {
-		return recetaId;
-	}
-
-	public void setRecetaId(int recetaId) {
-		this.recetaId = recetaId;
-	}   
+	
 
 }

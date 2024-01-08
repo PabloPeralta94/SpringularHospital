@@ -15,10 +15,10 @@ import hospital.demo.dto.medicamento.MedicamentoResponse;
 import hospital.demo.dto.receta.RecetaRequest;
 import hospital.demo.dto.receta.RecetaResponse;
 import hospital.demo.model.Medicamento;
-import hospital.demo.model.Receta;
 import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.MedicamentoService;
+import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +43,8 @@ public class MedicamentosController {
     private static final Logger logger = LoggerFactory.getLogger(MedicamentosController.class);
 
     
+    
+    @ApiOperation("Crea un medicamento desde el usuario logueado")
     @PostMapping("/byUser")
     public ResponseEntity<MedicamentoResponse> createMedicamentoForUsuario(@Valid @RequestBody MedicamentoRequest medicamento,
                                                                Authentication authentication) {
@@ -56,6 +58,8 @@ public class MedicamentosController {
         return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
     }
 
+    
+    @ApiOperation("Muestra una lista de medicamentos")
     @GetMapping
     public ResponseEntity<List<Medicamento>> getAllMedicamentos() {
         List<Medicamento> medicamentos = medicamentoService.getAllMedicamentos();
@@ -68,6 +72,8 @@ public class MedicamentosController {
         return medicamento.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
     
+    
+    @ApiOperation("Actualiza un medicamento desde su ID")
     @PutMapping("/update/{id}")
     public ResponseEntity<Medicamento> updateMedicamento(@PathVariable("id") int medicamentoId, @RequestBody Medicamento updatedMedicamento) {
         if (medicamentoService.getMedicamentoById(medicamentoId).isPresent()) {
@@ -79,6 +85,8 @@ public class MedicamentosController {
         }
     }
     
+    
+    @ApiOperation("Elimina un medicamento desde su ID")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteMedicamento(@PathVariable("id") int medicamentoId) {
         Optional<Medicamento> medicamento = medicamentoService.getMedicamentoById(medicamentoId);

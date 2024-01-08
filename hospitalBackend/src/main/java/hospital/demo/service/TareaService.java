@@ -16,7 +16,6 @@ import hospital.demo.dto.tarea.TareaResponse;
 import hospital.demo.dto.turno.TurnoRequest;
 import hospital.demo.dto.turno.TurnoResponse;
 import hospital.demo.model.Medicamento;
-import hospital.demo.model.Receta;
 import hospital.demo.model.Tarea;
 import hospital.demo.model.Turno;
 import hospital.demo.repository.TareaRepository;

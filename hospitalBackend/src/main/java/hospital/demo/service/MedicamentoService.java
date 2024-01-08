@@ -11,7 +11,6 @@ import hospital.demo.dto.medicamento.MedicamentoResponse;
 import hospital.demo.dto.receta.RecetaRequest;
 import hospital.demo.dto.receta.RecetaResponse;
 import hospital.demo.model.Medicamento;
-import hospital.demo.model.Receta;
 import hospital.demo.repository.MedicamentosRepository;
 import hospital.demo.security.entity.Usuario;
 

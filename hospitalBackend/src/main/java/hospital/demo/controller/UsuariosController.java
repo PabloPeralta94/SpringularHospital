@@ -25,6 +25,7 @@ import hospital.demo.security.entity.Usuario;
 import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.UsuarioService;
 import hospital.demo.service.TurnoService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -39,6 +40,8 @@ public class UsuariosController {
         this.jwtProvider = jwtProvider;
     }
     
+    
+    @ApiOperation("Muestra una lista de usuarios paginados")
     @GetMapping
     public ResponseEntity<Page<UsuarioResponse>> getAllUsuarios(Pageable pageable) {
         Page<Usuario> usuariosPage = usuarioService.getAllUsuarios(pageable);
@@ -52,6 +55,8 @@ public class UsuariosController {
         return new ResponseEntity<>(usuarioResponses, HttpStatus.OK);
     }
     
+    
+    @ApiOperation("Muestra una lista de usuarios por rol paginados")
     @GetMapping("/by-role")
     public ResponseEntity<Page<UsuarioResponse>> getUsuariosByRole(
             @RequestParam("role") String role,
@@ -67,6 +72,7 @@ public class UsuariosController {
         return new ResponseEntity<>(usuarioResponses, HttpStatus.OK);
     }
     
+    @ApiOperation("Elimina un usuario desde su ID")
     @DeleteMapping("/{usuarioId}")
     public ResponseEntity<String> deleteUsuario(@PathVariable int usuarioId) {
         Optional<Usuario> usuario = usuarioService.getById(usuarioId);

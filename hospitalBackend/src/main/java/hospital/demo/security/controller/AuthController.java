@@ -21,6 +21,7 @@ import hospital.demo.security.enums.RolNombre;
 import hospital.demo.security.jwt.JwtProvider;
 import hospital.demo.security.service.RolService;
 import hospital.demo.security.service.UsuarioService;
+import io.swagger.annotations.ApiOperation;
 import hospital.demo.security.dto.Mensaje;
 import java.util.Arrays;
 import java.text.ParseException;
@@ -47,6 +48,8 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
 
+    
+    @ApiOperation("Crea un nuevo usuario")
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -87,7 +90,8 @@ public class AuthController {
         return new ResponseEntity(new Mensaje("Usuario guardado"), HttpStatus.CREATED);
     }
 
-
+    
+    @ApiOperation("Obtiene un bearer token logueando un usuario")
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login( @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())

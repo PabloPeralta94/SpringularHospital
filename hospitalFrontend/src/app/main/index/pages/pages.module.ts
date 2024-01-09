@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { DocumentacionComponent } from './documentacion/documentacion.component';
 
 
 
@@ -45,6 +46,7 @@ import { MatInputModule } from '@angular/material/input';
     VerEmpleadosComponent,
     EditarEmpleadosComponent,
     TurnosPendientesComponent,
+    DocumentacionComponent,
         
    
   ],

@@ -31,11 +31,6 @@ export class InicioComponent {
       title: 'Administrar empleados',
       description: 'Si estas viendo esto y no has iniciado como administrador, por favor informa del problema de inmediato.',
       link: '/administracion',
-    },
-    {
-      title: 'Documentación',
-      description: 'Documentación del proyecto e información personal del creador',
-      link: '/documentación',
-    },  
+    }  
   ];
 }

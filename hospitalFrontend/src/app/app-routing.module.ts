@@ -14,7 +14,6 @@ import { MostrarTurnosPacienteComponent } from './main/index/pages/area-paciente
 import { SolicitarTurnosComponent } from './main/index/pages/area-pacientes/solicitar-turnos/solicitar-turnos.component';
 import { LoginComponent } from './security/auth/login/login.component';
 import { RegistroComponent } from './security/auth/registro/registro.component';
-import { DocumentacionComponent } from './main/index/pages/documentacion/documentacion.component';
 
 
 const routes: Routes = [
@@ -31,8 +30,7 @@ const routes: Routes = [
   {path: 'solicturno', component: SolicitarTurnosComponent},
   {path: 'comprar', component: ComprarComponent},
   {path: 'recetas/crear', component: CrearRecetaComponent},
-  {path: 'misturno', component: MostrarTurnosPacienteComponent},
-  {path: 'documentacion', component: DocumentacionComponent}
+  {path: 'misturno', component: MostrarTurnosPacienteComponent}
 
 
 ];

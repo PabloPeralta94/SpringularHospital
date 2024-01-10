@@ -23,7 +23,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
-import { ApiDocumentationsComponent } from './api-documentations/api-documentations.component';
 
 
 
@@ -46,8 +45,7 @@ import { ApiDocumentationsComponent } from './api-documentations/api-documentati
     CrearTareaComponent,
     VerEmpleadosComponent,
     EditarEmpleadosComponent,
-    TurnosPendientesComponent,
-    ApiDocumentationsComponent  
+    TurnosPendientesComponent
    
   ],
   imports: [
@@ -62,6 +60,7 @@ import { ApiDocumentationsComponent } from './api-documentations/api-documentati
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
+    
    
        
 

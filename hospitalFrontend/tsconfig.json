@@ -23,9 +23,7 @@
       "ES2022",
       "dom"
     ],
-    "strictPropertyInitialization": false,
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+    "strictPropertyInitialization": false,    
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

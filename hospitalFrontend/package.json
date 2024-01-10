@@ -28,6 +28,7 @@
     "bootstrap-icons": "^1.10.5",
     "ngx-toastr": "^16.1.0",
     "rxjs": "~7.8.0",
+    "swagger-ui": "^5.11.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
